@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Tubes.Console/Tubes.ConsoleApp.csproj" />
+  <Project Path="Tubes.Core/Tubes.Core.csproj" />
+  <Project Path="Tubes.Gui/Tubes.Gui.csproj" />
+</Solution>
