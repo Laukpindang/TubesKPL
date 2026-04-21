@@ -19,7 +19,7 @@ namespace Tubes.ConsoleApp
             Console.WriteLine("Isi keranjang:");
             foreach (var item in cart.GetBarang())
             {
-                Console.WriteLine($"{item.barang.nama} - {item.jumlah}");
+                Console.WriteLine($"{item.barang.nama} - {item.Jumlah}");
             }
         }
         static void Main(string[] args)
