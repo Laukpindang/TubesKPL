@@ -4,20 +4,27 @@ namespace Tubes.Gui
 {
     public partial class Form1 : Form
     {
+        Cart cart;
         public Form1()
         {
             InitializeComponent();
+            this.cart = new Cart();
+            listBarang.DataSource = cart.GetBarang();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            Test test = new Test();
-            label2.Text = test.greet();
-        }
+            string namaBarang = inputBarang.Text;
+            int jumlahBarang = (int)inputJumlah.Value;
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            if (!string.IsNullOrEmpty(namaBarang))
+            {
+                cart.TambahBarang(new Barang(namaBarang), jumlahBarang);
+            }
+            else
+            {
+                MessageBox.Show("Nama barang tidak boleh kosong.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
