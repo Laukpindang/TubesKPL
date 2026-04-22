@@ -8,17 +8,25 @@ namespace Tubes.Core
         [Browsable(false)]
         public Barang barang { get; set; }
 
-        public string NamaBarang
+        public string namaBarang
         {
             get { return barang.nama; }
         }
+        public int hargaBarang
+        {
+            get { return barang.harga; }
+        }
 
-        public int Jumlah { get; set; }
+        public int jumlah { get; set; }
+        public int subTotal
+        {
+            get { return barang.harga * jumlah; }
+        }
 
         public CartItem(Barang barang, int jumlah)
         {
             this.barang = barang;
-            this.Jumlah = jumlah;
+            this.jumlah = jumlah;
         }
     }
 }

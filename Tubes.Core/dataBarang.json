@@ -1,0 +1,19 @@
+{
+  "barang": [
+    {
+      "id": 1,
+      "nama": "Buku",
+      "harga": 5000
+    },
+    {
+      "id": 2,
+      "nama": "Pulpen",
+      "harga": 3500
+    },
+    {
+      "id": 3,
+      "nama": "Pensil",
+      "harga": 2000
+    }
+  ]
+}
