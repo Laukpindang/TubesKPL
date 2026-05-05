@@ -19,7 +19,8 @@ namespace Tubes.Gui
 
             if (!string.IsNullOrEmpty(namaBarang))
             {
-                cart.TambahBarang(new Barang(namaBarang), jumlahBarang);
+                // TODO: Implementasi logika untuk menambahkan barang ke cart (bisa cek console untuk referensi)
+                Barang barang = Katalog.cariBarang(namaBarang);
             }
             else
             {

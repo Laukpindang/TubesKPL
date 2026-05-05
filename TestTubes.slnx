@@ -2,4 +2,5 @@
   <Project Path="Tubes.Console/Tubes.ConsoleApp.csproj" />
   <Project Path="Tubes.Core/Tubes.Core.csproj" />
   <Project Path="Tubes.Gui/Tubes.Gui.csproj" />
+  <Project Path="Tubes.Tests/Tubes.Tests.csproj" Id="c1bd68a4-929f-4e51-be2b-3280e0fbe83e" />
 </Solution>
