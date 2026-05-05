@@ -3,17 +3,20 @@
     {
       "id": 1,
       "nama": "Buku",
-      "harga": 5000
+      "harga": 5000,
+      "stok": 10
     },
     {
       "id": 2,
       "nama": "Pulpen",
-      "harga": 3500
+      "harga": 3500,
+      "stok": 20"
     },
     {
       "id": 3,
       "nama": "Pensil",
-      "harga": 2000
+      "harga": 2000,
+      "stok": 15
     }
   ]
 }
