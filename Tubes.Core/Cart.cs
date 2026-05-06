@@ -16,7 +16,7 @@ namespace Tubes.Core
             var itemDitemukan = barang.FirstOrDefault(item => item.barang.nama == b.nama);
             if (itemDitemukan != null)
             {
-                itemDitemukan.Jumlah += jumlah;
+                itemDitemukan.jumlah += jumlah;
 
                 // update datagrid
                 int index = barang.IndexOf(itemDitemukan);
