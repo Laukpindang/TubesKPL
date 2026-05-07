@@ -4,6 +4,13 @@ namespace Tubes.ConsoleApp
 {
     internal class Program
     {
+        static void ContinueMessage() 
+        { 
+            Console.WriteLine();
+            Console.WriteLine("Tekan Enter untuk melanjutkan...");
+            Console.ReadLine();
+        }
+
         static void LihatSemuaBarang() 
         {
             Console.WriteLine("Daftar Barang:");
@@ -11,6 +18,8 @@ namespace Tubes.ConsoleApp
             {
                 Console.WriteLine($"{barang.nama} - {barang.harga}");
             }
+
+            ContinueMessage();
         }
 
         static void TambahBarang(Cart cart) 
@@ -32,7 +41,12 @@ namespace Tubes.ConsoleApp
                 Console.WriteLine("Jumlah yang dibeli harus lebih dari 0");
                 return;
             }
+
             cart.TambahBarang(barang, jumlahBarang);
+            Console.WriteLine("Barang berhasil ditambahkan ke keranjang.");
+
+            ContinueMessage();
+
         }
         static void TampilkanKeranjang(Cart cart) 
         {
@@ -41,7 +55,10 @@ namespace Tubes.ConsoleApp
             {
                 Console.WriteLine($"{item.barang.nama} - {item.jumlah}");
             }
+
+            ContinueMessage();
         }
+
         static void Main(string[] args)
         {
             Cart cart = new Cart();
@@ -50,6 +67,8 @@ namespace Tubes.ConsoleApp
             int pilihan = 0;
             while (pilihan != 3)
             {
+                Console.Clear();
+
                 Console.WriteLine("Menu:");
                 Console.WriteLine("0. Lihat Semua Barang");
                 Console.WriteLine("1. Tambah Barang");
@@ -57,6 +76,9 @@ namespace Tubes.ConsoleApp
                 Console.WriteLine("3. Keluar");
                 Console.Write("Pilih menu: ");
                 pilihan = int.Parse(Console.ReadLine());
+
+                Console.Clear();
+
                 switch (pilihan)
                 {
                     case 0:
