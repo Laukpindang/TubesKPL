@@ -9,45 +9,45 @@ namespace Tubes.Tests
     public sealed class TransaksiTest
     {
         [TestInitialize]
-        public async Task Setup()
+        public void Setup()
         {
-            Transaksi.ClearTransaksi().Wait();
+            Transaksi.ClearTransaksi();
             Transaksi.TestFile();
         }
         [TestMethod]
-        public async Task ManipulasiFileSesuai()
+        public void ManipulasiFileSesuai()
         {
             var car = new Cart();
 
-            Transaksi.TambahTransaksi(car).Wait();
+            Transaksi.TambahTransaksi(car);
             var jumlahAwal = Transaksi.ListTransaksi.Count;
 
 
             Transaksi.ListTransaksi.Clear();
-            Transaksi.LoadTransaksi().Wait();
+            Transaksi.LoadTransaksi();
 
             var jumlahAkhir = Transaksi.ListTransaksi.Count;
 
             Assert.AreEqual(jumlahAwal, jumlahAkhir);
         }
         [TestMethod]
-        public async Task TanggalWaktuTransaksiSesuai()
+        public void TanggalWaktuTransaksiSesuai()
         {
             var car = new Cart();
             var tanggalSeharusnya = DateTime.Now.ToString("yyyyMMdd");
 
-            Transaksi.TambahTransaksi(car).Wait();
+            Transaksi.TambahTransaksi(car);
 
             Assert.AreEqual(tanggalSeharusnya, Transaksi.ListTransaksi.Values.Last().tanggal);
             Assert.IsNotNull(Transaksi.ListTransaksi.Values.Last().waktu);
         }
         [TestMethod]
-        public async Task TambahTransaksiSesuai()
+        public void TambahTransaksiSesuai()
         {
             var car = new Cart();
             var jumlahAwal = Transaksi.ListTransaksi.Count;
 
-            Transaksi.TambahTransaksi(car).Wait();
+            Transaksi.TambahTransaksi(car);
             var jumlahAkhir = Transaksi.ListTransaksi.Count;
 
             Assert.IsGreaterThan(jumlahAwal, jumlahAkhir);

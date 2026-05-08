@@ -22,7 +22,7 @@ namespace Tubes.Core
                                             "logTransaksiTest.json");
         }
 
-        public static async Task LoadTransaksi()
+        public static void LoadTransaksi()
         {
             string? directory = Path.GetDirectoryName(_filepath);
 
@@ -33,10 +33,10 @@ namespace Tubes.Core
 
             if (!File.Exists(_filepath))
             {
-                await File.WriteAllTextAsync(_filepath, "{}");
+                File.WriteAllTextAsync(_filepath, "{}");
             }
 
-            string jsonString = await File.ReadAllTextAsync(_filepath);
+            string jsonString = File.ReadAllText(_filepath);
 
             if(string.IsNullOrEmpty(jsonString)) {
                 ListTransaksi = new Dictionary<string, DetailTransaksi>();
@@ -45,25 +45,25 @@ namespace Tubes.Core
             }
         }
 
-        public static async Task saveTransaksi() 
+        public static void saveTransaksi() 
         { 
             string jsonString = JsonSerializer.Serialize(ListTransaksi);
-            await File.WriteAllTextAsync(_filepath, jsonString);
+            File.WriteAllTextAsync(_filepath, jsonString);
         }
 
-        public static async Task TambahTransaksi(Cart keranjang) 
+        public static void TambahTransaksi(Cart keranjang) 
         {
             DetailTransaksi detail = new DetailTransaksi(keranjang);
             ListTransaksi.Add(MembuatKode(detail), detail);
 
-            await saveTransaksi();
-            await LoadTransaksi();
+            saveTransaksi();
+            LoadTransaksi();
         }
 
-        public static async Task ClearTransaksi() 
+        public static void ClearTransaksi() 
         {
             ListTransaksi.Clear();
-            await saveTransaksi();
+            saveTransaksi();
         }
 
         public static string MembuatKode(DetailTransaksi detail)

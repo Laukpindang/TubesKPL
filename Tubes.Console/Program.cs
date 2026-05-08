@@ -53,7 +53,7 @@ namespace Tubes.ConsoleApp
                         TambahBarang(cart);
                         break;
                     case 2:
-                        await Transaksi.TambahTransaksi(cart);
+                        Transaksi.TambahTransaksi(cart);
                         cart.ClearCart();
                         Console.WriteLine("Transaksi Berhasil Dilakukan.");
                         ContinueMessage();
@@ -139,7 +139,7 @@ namespace Tubes.ConsoleApp
         {
             Cart cart = new Cart();
             Katalog.LoadData();
-            await Transaksi.LoadTransaksi();
+            Transaksi.LoadTransaksi();
 
             int pilihan = 0;
             while (pilihan != 3)
