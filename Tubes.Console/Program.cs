@@ -151,7 +151,6 @@ namespace Tubes.ConsoleApp
                 Console.WriteLine("1. Transaksi");
                 Console.WriteLine("2. Log Transaksi");
                 Console.WriteLine("3. Keluar");
-                Console.WriteLine("8. Hapus Log Transaksi");
                 Console.Write("Pilih menu: ");
                 pilihan = int.Parse(Console.ReadLine());
 
@@ -170,9 +169,6 @@ namespace Tubes.ConsoleApp
                         break;
                     case 3:
                         Console.WriteLine("Terima kasih!");
-                        break;
-                    case 8:
-                        await Transaksi.ClearTransaksi();
                         break;
                     default:
                         Console.WriteLine("Pilihan tidak valid.");
