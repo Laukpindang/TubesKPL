@@ -15,6 +15,13 @@ namespace Tubes.Core
         [JsonPropertyName("listTransaksi")]
         public static Dictionary<string, DetailTransaksi> ListTransaksi = new Dictionary<string, DetailTransaksi>();
 
+        public static void TestFile()
+        {
+            _filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                                            "DataTubesKPL",
+                                            "logTransaksiTest.json");
+        }
+
         public static async Task LoadTransaksi()
         {
             string? directory = Path.GetDirectoryName(_filepath);
