@@ -1,70 +1,92 @@
 ﻿using System.ComponentModel;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Tubes.Core
 {
     public class Transaksi
     {
-        private static readonly string _filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logTransaksi.json");
+        [JsonIgnore]
+        private static string _filepath = Path.Combine(
+                                            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                                            "DataTubesKPL",
+                                            "logTransaksi.json");
 
-        public Dictionary<string, DetailTransaksi> ListTransaksi = new Dictionary<string, DetailTransaksi>();
+        [JsonPropertyName("listTransaksi")]
+        public static Dictionary<string, DetailTransaksi> ListTransaksi = new Dictionary<string, DetailTransaksi>();
 
-        public void loadTransaksi()
+        public static async Task LoadTransaksi()
         {
+            string? directory = Path.GetDirectoryName(_filepath);
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
             if (!File.Exists(_filepath))
             {
-                File.WriteAllText(_filepath, "{}");
+                await File.WriteAllTextAsync(_filepath, "{}");
             }
-            string jsonString = File.ReadAllText(_filepath);
-            ListTransaksi = JsonSerializer.Deserialize<Dictionary<string, DetailTransaksi>>(jsonString) ?? new Dictionary<string, DetailTransaksi>();
+
+            string jsonString = await File.ReadAllTextAsync(_filepath);
+
+            if(string.IsNullOrEmpty(jsonString)) {
+                ListTransaksi = new Dictionary<string, DetailTransaksi>();
+            } else {
+                ListTransaksi = JsonSerializer.Deserialize<Dictionary<string, DetailTransaksi>>(jsonString) ?? new Dictionary<string, DetailTransaksi>();
+            }
         }
 
-        public void saveTransaksi() 
+        public static async Task saveTransaksi() 
         { 
             string jsonString = JsonSerializer.Serialize(ListTransaksi);
-            File.WriteAllText(_filepath, jsonString);
+            await File.WriteAllTextAsync(_filepath, jsonString);
         }
 
-        public void TambahTransaksi(Cart keranjang) 
+        public static async Task TambahTransaksi(Cart keranjang) 
         {
             DetailTransaksi detail = new DetailTransaksi(keranjang);
-            ListTransaksi.Add(MembuatKode(keranjang), detail);
+            ListTransaksi.Add(MembuatKode(detail), detail);
 
-            saveTransaksi();
+            await saveTransaksi();
+            await LoadTransaksi();
         }
 
-        public string MembuatKode(Cart keranjang)
+        public static async Task ClearTransaksi() 
         {
-            return $"{DateTime.Now:yyyyMMdd} - {ListTransaksi.Count}";
+            ListTransaksi.Clear();
+            await saveTransaksi();
+        }
+
+        public static string MembuatKode(DetailTransaksi detail)
+        {
+            return $"{detail.tanggal}{ListTransaksi.Count + 1:D4}";
         }
 
     }
 
     public class DetailTransaksi
     {
+        [JsonPropertyName("tanggal")]
         public string tanggal { get; init; }
+        [JsonPropertyName("waktu")]
         public string waktu { get; init; }
+        [JsonPropertyName("barang")]
         public BindingList<CartItem> barang { get; init; }
+        [JsonPropertyName("total")]
         public int total { get; init; }
+
+        public DetailTransaksi() { }
 
         public DetailTransaksi(Cart keranjang) 
         {
             tanggal = DateTime.Now.ToString("yyyyMMdd");
             waktu = DateTime.Now.ToString("HH:mm:ss");
             barang = keranjang.GetBarang();
-            total = TotalHarga(keranjang);
+            total = keranjang.TotalHarga();
         }
 
-        public int TotalHarga(Cart keranjang)
-        {
-            int total = 0;
-            foreach(CartItem item in keranjang.GetBarang())
-            {
-                total += item.subTotal;
-            }
-
-            return total;
-        }
-
+ 
     }
 }

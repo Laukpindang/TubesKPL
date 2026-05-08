@@ -1,29 +1,35 @@
-﻿
+﻿using Tubes.Core;
 
 using Microsoft.AspNetCore.Mvc;
-
 namespace Tubes.API.Controllers
 {
+
+    [ApiController]
+    [Route("api/Transaksi")]
     public class TransaksiController : Controller
     {
-        private static readonly List<string> _listTransaksi = new List<string>();
-
-
 
         [HttpGet]
-        public IActionResult GetTransaksi()
+        public async Task<IActionResult> GetTransaksi()
         {
-            return Ok(_listTransaksi);
+            await Transaksi.LoadTransaksi();
+            var result = Transaksi.ListTransaksi;
+
+            if (result.Count == 0) return Ok("The file was found, but the dictionary is empty.");
+            return Ok(Transaksi.ListTransaksi);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetTransaksiById(int id)
+        [HttpGet("{kodeTransaksi}")]
+        public async Task<IActionResult> GetTransaksiByKode(string kodeTransaksi)
         {
-            if (id < 0 || id >= _listTransaksi.Count)
+            await Transaksi.LoadTransaksi();
+            var result = Transaksi.ListTransaksi;
+            if (!result.TryGetValue(kodeTransaksi, out var transaksi))
             {
-                return NotFound();
+                return NotFound($"Key {kodeTransaksi} was not found.");
             }
-            return Ok(_listTransaksi[id]);
+
+            return Ok(transaksi);
         }
     }
 }

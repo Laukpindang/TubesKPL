@@ -28,9 +28,24 @@ namespace Tubes.Core
             }
         }
 
+        public int TotalHarga()
+        {
+            int total = 0;
+            foreach (var item in barang)
+            {
+                total += item.jumlah * item.barang.harga;
+            }
+            return total;
+        }
+
         public BindingList<CartItem> GetBarang()
         {
             return barang;
+        }
+
+        public void ClearCart()
+        {
+            barang.Clear();
         }
     }
 }
