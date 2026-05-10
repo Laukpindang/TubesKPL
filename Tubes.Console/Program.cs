@@ -22,14 +22,15 @@ namespace Tubes.ConsoleApp
             ContinueMessage();
         }
 
-        static async Task MenuTransaksi(Cart<Barang> cart)
+        static async Task MenuTransaksi(Cart<Barang> cart, TransaksiStateMachine sm)
         {
+            sm.StartBelanja();
 
             bool transaksiSelesai = false;
             while (!transaksiSelesai)
             {
                 Console.WriteLine(new string('=', 50));
-                Console.WriteLine($"{new string(' ', 2)} Transaksi");
+                Console.WriteLine($"{new string(' ', 2)} Transaksi | Status: {sm.CurrentState}");
                 Console.WriteLine(new string('=', 50));
 
                 foreach (var item in cart.GetBarang())
@@ -50,19 +51,30 @@ namespace Tubes.ConsoleApp
                 switch (pilihanTransaksi)
                 {
                     case 1:
+                        if(sm.CurrentState == TransaksiState.MenungguBayar)
+                        {
+                            sm.tambahBarangLagi();
+                        }
                         TambahBarang(cart);
                         break;
                     case 2:
-                        Transaksi.TambahTransaksi(cart);
-                        cart.ClearCart();
-                        Console.WriteLine("Transaksi Berhasil Dilakukan.");
+                        sm.Checkout();
+                        Console.WriteLine("Proses pembayaran...");
                         ContinueMessage();
                         break;
                     case 3:
+                        sm.Bayar();
+                        Transaksi.TambahTransaksi(cart);
+                        cart.ClearCart();
+                        sm.reset();
+                        Console.WriteLine("Transaksi berhasil.");
                         transaksiSelesai = true;
                         break;
                     case 4:
+                        sm.Batal();
+                        sm.reset();
                         cart.ClearCart();
+                        Console.WriteLine("Transaksi dibatalkan.");
                         transaksiSelesai = true;
                         break;
                     default:
@@ -138,6 +150,7 @@ namespace Tubes.ConsoleApp
         static async Task Main(string[] args)
         {
             Cart<Barang> cart = new Cart<Barang>();
+            TransaksiStateMachine sm = new TransaksiStateMachine();
             Katalog.LoadData();
             Transaksi.LoadTransaksi();
 
@@ -162,7 +175,7 @@ namespace Tubes.ConsoleApp
                         LihatSemuaBarang();
                         break;
                     case 1:
-                        await MenuTransaksi(cart);
+                        await MenuTransaksi(cart, sm);
                         break;
                     case 2:
                         PrintLogTransaksi();

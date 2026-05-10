@@ -33,7 +33,7 @@ namespace Tubes.Core
 
             if (!File.Exists(_filepath))
             {
-                File.WriteAllTextAsync(_filepath, "{}");
+                File.WriteAllText(_filepath, "{}");
             }
 
             string jsonString = File.ReadAllText(_filepath);
@@ -51,7 +51,7 @@ namespace Tubes.Core
         public static void saveTransaksi()
         {
             string jsonString = JsonSerializer.Serialize(ListTransaksi);
-            File.WriteAllTextAsync(_filepath, jsonString);
+            File.WriteAllText(_filepath, jsonString);
         }
 
         public static void TambahTransaksi(Cart<Barang> keranjang)
