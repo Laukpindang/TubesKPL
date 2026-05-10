@@ -31,6 +31,6 @@ namespace Tubes.Core
     }
     class DataKatalog
     {
-        public List<Barang> barang { get;  set; }
+        public List<Barang> barang { get; set; }
     }
 }
