@@ -91,7 +91,7 @@
             // 
             // cartItemBindingSource
             // 
-            cartItemBindingSource.DataSource = typeof(Core.CartItem<Core.Barang>);
+            cartItemBindingSource.DataSource = typeof(Core.CartItem);
             // 
             // btnAdd
             // 

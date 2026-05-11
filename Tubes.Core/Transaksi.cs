@@ -33,28 +33,25 @@ namespace Tubes.Core
 
             if (!File.Exists(_filepath))
             {
-                File.WriteAllText(_filepath, "{}");
+                File.WriteAllTextAsync(_filepath, "{}");
             }
 
             string jsonString = File.ReadAllText(_filepath);
 
-            if (string.IsNullOrEmpty(jsonString))
-            {
+            if(string.IsNullOrEmpty(jsonString)) {
                 ListTransaksi = new Dictionary<string, DetailTransaksi>();
-            }
-            else
-            {
+            } else {
                 ListTransaksi = JsonSerializer.Deserialize<Dictionary<string, DetailTransaksi>>(jsonString) ?? new Dictionary<string, DetailTransaksi>();
             }
         }
 
-        public static void saveTransaksi()
-        {
+        public static void saveTransaksi() 
+        { 
             string jsonString = JsonSerializer.Serialize(ListTransaksi);
-            File.WriteAllText(_filepath, jsonString);
+            File.WriteAllTextAsync(_filepath, jsonString);
         }
 
-        public static void TambahTransaksi(Cart<Barang> keranjang)
+        public static void TambahTransaksi(Cart keranjang) 
         {
             DetailTransaksi detail = new DetailTransaksi(keranjang);
             ListTransaksi.Add(MembuatKode(detail), detail);
@@ -63,7 +60,7 @@ namespace Tubes.Core
             LoadTransaksi();
         }
 
-        public static void ClearTransaksi()
+        public static void ClearTransaksi() 
         {
             ListTransaksi.Clear();
             saveTransaksi();
@@ -83,13 +80,13 @@ namespace Tubes.Core
         [JsonPropertyName("waktu")]
         public string waktu { get; init; }
         [JsonPropertyName("barang")]
-        public BindingList<CartItem<Barang>> barang { get; init; }
+        public BindingList<CartItem> barang { get; init; }
         [JsonPropertyName("total")]
         public int total { get; init; }
 
         public DetailTransaksi() { }
 
-        public DetailTransaksi(Cart<Barang> keranjang)
+        public DetailTransaksi(Cart keranjang) 
         {
             tanggal = DateTime.Now.ToString("yyyyMMdd");
             waktu = DateTime.Now.ToString("HH:mm:ss");
@@ -97,6 +94,6 @@ namespace Tubes.Core
             total = keranjang.TotalHarga();
         }
 
-
+ 
     }
 }

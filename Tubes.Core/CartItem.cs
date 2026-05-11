@@ -2,11 +2,11 @@
 
 namespace Tubes.Core
 {
-    public class CartItem<T> where T : IBarang
+    public class CartItem
     {
         // untuk DataGridView
         [Browsable(false)]
-        public T barang { get; set; }
+        public Barang barang { get; set; }
 
         public string namaBarang
         {
@@ -23,7 +23,7 @@ namespace Tubes.Core
             get { return barang.harga * jumlah; }
         }
 
-        public CartItem(T barang, int jumlah)
+        public CartItem(Barang barang, int jumlah)
         {
             this.barang = barang;
             this.jumlah = jumlah;

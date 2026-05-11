@@ -4,11 +4,11 @@ namespace Tubes.Gui
 {
     public partial class Form1 : Form
     {
-        Cart<Barang> cart;
+        Cart cart;
         public Form1()
         {
             InitializeComponent();
-            this.cart = new Cart<Barang>();
+            this.cart = new Cart();
             listBarang.DataSource = cart.GetBarang();
         }
 
