@@ -11,4 +11,8 @@
     <ProjectReference Include="..\Tubes.Core\Tubes.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
+  </ItemGroup>
+
 </Project>

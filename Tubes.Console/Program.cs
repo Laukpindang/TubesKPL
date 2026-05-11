@@ -1,4 +1,5 @@
 ﻿using Tubes.Core;
+using BenchmarkDotNet.Running;
 
 namespace Tubes.ConsoleApp
 {
@@ -153,6 +154,11 @@ namespace Tubes.ConsoleApp
             Cart<Barang> cart = new Cart<Barang>();
             TransaksiStateMachine sm = new TransaksiStateMachine();
             Katalog.LoadData();
+
+            // TEST BENCHMARK DISINI
+            // NOTE: UNTUK TEST, MASUK KE PROJECT CONSOLE `cd Tubes.Console`, LALU JALANKAN `dotnet run -c Release`
+            // UNTUK CONTOH TEST LIHAT CLASS `KatalogBenchmark.cs`
+            var katalogSummary = BenchmarkRunner.Run<KatalogBenchmark>();
 
             int pilihan = 0;
             while (pilihan != 3)
