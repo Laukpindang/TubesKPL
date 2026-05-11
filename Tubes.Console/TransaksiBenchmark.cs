@@ -7,6 +7,7 @@ namespace Tubes.ConsoleApp
     public class TransaksiBenchmark
     {
         private Cart<Barang> _tempCart;
+        private string paymentType;
 
         //Test dari beberapa ukuran riwayat
         //Penyusutan jumlah paramater dari [10, 50] (laptop hampir meledak) :v
@@ -20,9 +21,10 @@ namespace Tubes.ConsoleApp
             Transaksi.ClearTransaksi();
 
             _tempCart = new Cart<Barang>();
+            paymentType = "Cash";
             for (int i = 0; i < TransactionCount; i++)
             {
-                Transaksi.TambahTransaksi(_tempCart);
+                Transaksi.TambahTransaksi(_tempCart, paymentType);
             }
         }
 
@@ -43,7 +45,7 @@ namespace Tubes.ConsoleApp
         public void FileManipulationTest()
         {
             //Tes dampak penambahan riwayat baru
-            Transaksi.TambahTransaksi(_tempCart);
+            Transaksi.TambahTransaksi(_tempCart, paymentType);
         }
 
     }
