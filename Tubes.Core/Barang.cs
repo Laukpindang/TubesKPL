@@ -1,6 +1,6 @@
 ﻿namespace Tubes.Core
 {
-    public class Barang
+    public class Barang : IBarang
     {
         public int id { get; set; }
         public string nama { get; set; }

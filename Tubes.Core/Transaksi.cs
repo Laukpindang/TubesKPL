@@ -31,7 +31,7 @@ namespace Tubes.Core
 
             if (!File.Exists(_filepath))
             {
-                File.WriteAllTextAsync(_filepath, "{}");
+                File.WriteAllText(_filepath, "{}");
             }
 
             string jsonString = File.ReadAllText(_filepath);
@@ -46,10 +46,10 @@ namespace Tubes.Core
         public static void saveTransaksi() 
         { 
             string jsonString = JsonSerializer.Serialize(ListTransaksi);
-            File.WriteAllTextAsync(_filepath, jsonString);
+            File.WriteAllText(_filepath, jsonString);
         }
 
-        public static void TambahTransaksi(Cart keranjang) 
+        public static void TambahTransaksi(Cart<Barang> keranjang) 
         {
             DetailTransaksi detail = new DetailTransaksi(keranjang);
             ListTransaksi.Add(MembuatKode(detail), detail);
@@ -77,13 +77,13 @@ namespace Tubes.Core
         [JsonPropertyName("waktu")]
         public string waktu { get; init; }
         [JsonPropertyName("barang")]
-        public BindingList<CartItem> barang { get; init; }
+        public BindingList<CartItem<Barang>> barang { get; init; }
         [JsonPropertyName("total")]
         public int total { get; init; }
 
         public DetailTransaksi() { }
 
-        public DetailTransaksi(Cart keranjang) 
+        public DetailTransaksi(Cart<Barang> keranjang) 
         {
             tanggal = DateTime.Now.ToString("yyyyMMdd");
             waktu = DateTime.Now.ToString("HH:mm:ss");
