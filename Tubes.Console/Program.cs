@@ -24,11 +24,13 @@ namespace Tubes.ConsoleApp
         }
 
 
-        static async Task MenuTransaksi(Cart<Barang> cart, TransaksiStateMachine sm)
+        static async Task MenuTransaksi(Cart<Barang> cart, TransaksiStateMachine sm, PaymentMethod pt)
         {
             sm.StartBelanja();
+            pt.StartBelanja();
 
             bool transaksiSelesai = false;
+            string paymentType = string.Empty;
             while (!transaksiSelesai) 
             {
                 Console.WriteLine(new string('=', 50));
@@ -41,6 +43,8 @@ namespace Tubes.ConsoleApp
                 }
 
                 Console.WriteLine(new string('\n', 2));
+                Console.WriteLine(new string('-', 50));
+                Console.WriteLine($"{new string(' ', 2)} Metode Pembayaran: {pt.CurrentState}");
                 Console.WriteLine(new string('-', 50));
                 Console.WriteLine($"Total Belanja: {cart.TotalHarga()}");
                 Console.WriteLine(new string('-', 50));
@@ -61,12 +65,11 @@ namespace Tubes.ConsoleApp
                         break;
                     case 2:
                         sm.Checkout();
-                        Console.WriteLine("Proses pembayaran...");
-                        ContinueMessage();
+                        paymentType = await MenuPembayaran(pt);
                         break;
                     case 3:
                         sm.Bayar();
-                        Transaksi.TambahTransaksi(cart);
+                        Transaksi.TambahTransaksi(cart, paymentType);
                         cart.ClearCart();
                         sm.reset();
                         Console.WriteLine("Transaksi berhasil.");
@@ -88,6 +91,23 @@ namespace Tubes.ConsoleApp
                 Console.Clear();
             }
 
+        }
+
+        private static async Task<string> MenuPembayaran(PaymentMethod pt)
+        {
+            int count = 1;
+
+            Console.WriteLine("Jenis Pembayaran:");
+            string[] paymentTypes = pt.getPaymentType();
+            foreach (var paymentType in paymentTypes)
+            {
+                Console.WriteLine($"{count}. {paymentType}");
+                count++;
+            }
+            Console.Write("Metode Pembayaran: ");
+            int.TryParse(Console.ReadLine(), out int pilihanPayment);
+
+            return pt.Payment(pilihanPayment);
         }
 
         static void PrintLogTransaksi()
@@ -153,6 +173,7 @@ namespace Tubes.ConsoleApp
         {
             Cart<Barang> cart = new Cart<Barang>();
             TransaksiStateMachine sm = new TransaksiStateMachine();
+            PaymentMethod pt = new PaymentMethod();
             Katalog.LoadData();
 
             // TEST BENCHMARK DISINI
@@ -182,7 +203,7 @@ namespace Tubes.ConsoleApp
                         LihatSemuaBarang();
                         break;
                     case 1:
-                        await MenuTransaksi(cart, sm);
+                        await MenuTransaksi(cart, sm, pt);
                         break;
                     case 2:
                         PrintLogTransaksi();
