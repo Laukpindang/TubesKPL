@@ -123,6 +123,8 @@ namespace Tubes.ConsoleApp
                     Console.WriteLine($"{item.barang.nama} - {item.jumlah} x {item.barang.harga} = {item.jumlah * item.barang.harga}");
                 }
                 Console.WriteLine(new string('-', 50));
+                Console.WriteLine($"Metode Pembayaran: {transaksi.Value.jenis_pembayaran}");
+                Console.WriteLine(new string('-', 50));
                 Console.WriteLine($"Total Belanja: {transaksi.Value.total}");
                 Console.WriteLine(new string('=', 50));
 
