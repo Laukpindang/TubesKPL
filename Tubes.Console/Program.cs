@@ -134,6 +134,51 @@ namespace Tubes.ConsoleApp
             ContinueMessage();
         }
 
+        static void FilterTransaksiByTanggal()
+        {
+            Console.Write("Masukkan tanggal (yyyyMMdd): ");
+            string tanggal = Console.ReadLine();
+
+            var hasil = Transaksi.FilterTransaksi(
+                t => t.tanggal == tanggal
+            );
+            Console.Clear();
+
+            if (!hasil.Any())
+            {
+                Console.WriteLine("Transaksi tidak ditemukan.");
+            }
+            else
+            {
+                foreach (var transaksi in hasil)
+                {
+                    Console.WriteLine(new string('=', 50));
+                    Console.WriteLine($"Kode Transaksi: {transaksi.Key}");
+                    Console.WriteLine($"Tanggal: {transaksi.Value.tanggal}");
+                    Console.WriteLine($"Waktu: {transaksi.Value.waktu}");
+
+                    Console.WriteLine("Barang:");
+
+                    foreach (var item in transaksi.Value.barang)
+                    {
+                        Console.WriteLine(
+                            $"{item.barang.nama} - " +
+                            $"{item.jumlah} x {item.barang.harga} = " +
+                            $"{item.jumlah * item.barang.harga}"
+                        );
+                    }
+
+                    Console.WriteLine(new string('-', 50));
+                    Console.WriteLine($"Total Belanja: {transaksi.Value.total}");
+                    Console.WriteLine(new string('=', 50));
+                    Console.WriteLine();
+                }
+            }
+
+            ContinueMessage();
+        }
+
+
 
         static void TambahBarang(Cart<Barang> cart) 
         {
@@ -185,7 +230,7 @@ namespace Tubes.ConsoleApp
             var transaksiSummary = BenchmarkRunner.Run<TransaksiBenchmark>();
 
             int pilihan = 0;
-            while (pilihan != 3)
+            while (pilihan != 4)
             {
                 Transaksi.LoadTransaksi();
                 Console.Clear();
@@ -194,7 +239,8 @@ namespace Tubes.ConsoleApp
                 Console.WriteLine("0. Lihat Semua Barang");
                 Console.WriteLine("1. Transaksi");
                 Console.WriteLine("2. Log Transaksi");
-                Console.WriteLine("3. Keluar");
+                Console.WriteLine("3. Filter Transaksi");
+                Console.WriteLine("4. Keluar");
                 Console.Write("Pilih menu: ");
                 pilihan = int.Parse(Console.ReadLine());
 
@@ -212,12 +258,15 @@ namespace Tubes.ConsoleApp
                         PrintLogTransaksi();
                         break;
                     case 3:
-                        Console.WriteLine("Terima kasih!");
+                        FilterTransaksiByTanggal();
                         break;
-                    default:
-                        Console.WriteLine("Pilihan tidak valid.");
-                        break;
-                }
+                    case 4:
+                            Console.WriteLine("Terima kasih!");
+                            break;
+                        default:
+                            Console.WriteLine("Pilihan tidak valid.");
+                            break;
+                        }
             }
         }
     }
