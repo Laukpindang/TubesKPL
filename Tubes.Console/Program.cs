@@ -182,9 +182,7 @@ namespace Tubes.ConsoleApp
             // NOTE: UNTUK TEST, MASUK KE PROJECT CONSOLE `cd Tubes.Console`, LALU JALANKAN `dotnet run -c Release`
             // UNTUK CONTOH TEST LIHAT CLASS `KatalogBenchmark.cs`
             var katalogSummary = BenchmarkRunner.Run<KatalogBenchmark>();
-            await Task.Delay(2000); // Delay untuk memastikan hasil benchmark sebelumnya terbaca dengan baik sebelum melanjutkan ke benchmark berikutnya
             var transaksiSummary = BenchmarkRunner.Run<TransaksiBenchmark>();
-            await Task.Delay(10000); // Delay untuk memastikan hasil benchmark sebelumnya terbaca dengan baik sebelum melanjutkan ke benchmark berikutnya
 
             int pilihan = 0;
             while (pilihan != 3)
