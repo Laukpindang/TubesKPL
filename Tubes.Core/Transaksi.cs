@@ -8,18 +8,16 @@ namespace Tubes.Core
     {
         [JsonIgnore]
         private static string _filepath = Path.Combine(
-                                            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                                            "DataTubesKPL",
-                                            "logTransaksi.json");
+                                            AppDomain.CurrentDomain.BaseDirectory,
+                                            @"..\..\..\..\logTransaksi.json");
 
         [JsonPropertyName("listTransaksi")]
         public static Dictionary<string, DetailTransaksi> ListTransaksi = new Dictionary<string, DetailTransaksi>();
 
         public static void TestFile()
         {
-            _filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                                            "DataTubesKPL",
-                                            "logTransaksiTest.json");
+            _filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                                            @"..\..\..\..\logTransaksiTest.json");
         }
 
         public static void LoadTransaksi()
@@ -57,7 +55,6 @@ namespace Tubes.Core
             ListTransaksi.Add(MembuatKode(detail), detail);
 
             saveTransaksi();
-            LoadTransaksi();
         }
 
         public static void ClearTransaksi() 

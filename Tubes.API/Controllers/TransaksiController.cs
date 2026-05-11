@@ -10,19 +10,18 @@ namespace Tubes.API.Controllers
     {
 
         [HttpGet]
-        public async Task<IActionResult> GetTransaksi()
+        public IActionResult GetTransaksi()
         {
-            await Transaksi.LoadTransaksi();
+            Transaksi.LoadTransaksi();
             var result = Transaksi.ListTransaksi;
 
-            if (result.Count == 0) return Ok("The file was found, but the dictionary is empty.");
             return Ok(Transaksi.ListTransaksi);
         }
 
         [HttpGet("{kodeTransaksi}")]
-        public async Task<IActionResult> GetTransaksiByKode(string kodeTransaksi)
+        public IActionResult GetTransaksiByKode(string kodeTransaksi)
         {
-            await Transaksi.LoadTransaksi();
+            Transaksi.LoadTransaksi();
             var result = Transaksi.ListTransaksi;
             if (!result.TryGetValue(kodeTransaksi, out var transaksi))
             {

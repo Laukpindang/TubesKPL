@@ -139,11 +139,11 @@ namespace Tubes.ConsoleApp
         {
             Cart cart = new Cart();
             Katalog.LoadData();
-            Transaksi.LoadTransaksi();
 
             int pilihan = 0;
             while (pilihan != 3)
             {
+                Transaksi.LoadTransaksi();
                 Console.Clear();
 
                 Console.WriteLine("Menu:");
