@@ -17,7 +17,7 @@ namespace Tubes.Tests
         [TestMethod]
         public void ManipulasiFileSesuai()
         {
-            var car = new Cart<Barang>();
+            var car = new Cart();
 
             Transaksi.TambahTransaksi(car);
             var jumlahAwal = Transaksi.ListTransaksi.Count;
@@ -33,7 +33,7 @@ namespace Tubes.Tests
         [TestMethod]
         public void TanggalWaktuTransaksiSesuai()
         {
-            var car = new Cart<Barang>();
+            var car = new Cart();
             var tanggalSeharusnya = DateTime.Now.ToString("yyyyMMdd");
 
             Transaksi.TambahTransaksi(car);
@@ -44,7 +44,7 @@ namespace Tubes.Tests
         [TestMethod]
         public void TambahTransaksiSesuai()
         {
-            var car = new Cart<Barang>();
+            var car = new Cart();
             var jumlahAwal = Transaksi.ListTransaksi.Count;
 
             Transaksi.TambahTransaksi(car);
