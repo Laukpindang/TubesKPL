@@ -1,11 +1,19 @@
 ﻿using System.ComponentModel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Linq;
 
 namespace Tubes.Core
 {
     public class Transaksi
     {
+        public static IEnumerable<KeyValuePair<string, DetailTransaksi>>
+        FilterTransaksi(Func<DetailTransaksi, bool> predicate)
+        {
+            return ListTransaksi
+                .Where(x => predicate(x.Value));
+        }
+
         [JsonIgnore]
         private static string _filepath = Path.Combine(
                                             AppDomain.CurrentDomain.BaseDirectory,
