@@ -159,6 +159,7 @@ namespace Tubes.ConsoleApp
             // NOTE: UNTUK TEST, MASUK KE PROJECT CONSOLE `cd Tubes.Console`, LALU JALANKAN `dotnet run -c Release`
             // UNTUK CONTOH TEST LIHAT CLASS `KatalogBenchmark.cs`
             var katalogSummary = BenchmarkRunner.Run<KatalogBenchmark>();
+            var transaksiSummary = BenchmarkRunner.Run<TransaksiBenchmark>();
 
             int pilihan = 0;
             while (pilihan != 3)
