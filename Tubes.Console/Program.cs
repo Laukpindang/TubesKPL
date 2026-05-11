@@ -4,14 +4,14 @@ namespace Tubes.ConsoleApp
 {
     internal class Program
     {
-        static void ContinueMessage()
-        {
+        static void ContinueMessage() 
+        { 
             Console.WriteLine();
             Console.WriteLine("Tekan Enter untuk melanjutkan...");
             Console.ReadLine();
         }
 
-        static void LihatSemuaBarang()
+        static void LihatSemuaBarang() 
         {
             Console.WriteLine("Daftar Barang:");
             foreach (Barang barang in Katalog.GetAllBarang())
@@ -22,12 +22,13 @@ namespace Tubes.ConsoleApp
             ContinueMessage();
         }
 
+
         static async Task MenuTransaksi(Cart<Barang> cart, TransaksiStateMachine sm)
         {
             sm.StartBelanja();
 
             bool transaksiSelesai = false;
-            while (!transaksiSelesai)
+            while (!transaksiSelesai) 
             {
                 Console.WriteLine(new string('=', 50));
                 Console.WriteLine($"{new string(' ', 2)} Transaksi | Status: {sm.CurrentState}");
@@ -111,13 +112,13 @@ namespace Tubes.ConsoleApp
         }
 
 
-        static void TambahBarang(Cart<Barang> cart)
+        static void TambahBarang(Cart<Barang> cart) 
         {
             Console.Write("Masukkan nama barang: ");
             string namaBarang = Console.ReadLine();
 
             Barang barang = Katalog.cariBarang(namaBarang);
-            if (barang == null)
+            if (barang == null) 
             {
                 Console.WriteLine("Barang tidak ditemukan.");
                 return;
@@ -136,7 +137,7 @@ namespace Tubes.ConsoleApp
 
 
         }
-        static void TampilkanKeranjang(Cart<Barang> cart)
+        static void TampilkanKeranjang(Cart<Barang> cart) 
         {
             Console.WriteLine("Isi keranjang:");
             foreach (var item in cart.GetBarang())

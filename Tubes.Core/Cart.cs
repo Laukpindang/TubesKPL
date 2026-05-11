@@ -4,7 +4,7 @@ namespace Tubes.Core
 {
     public class Cart<T> where T : IBarang
     {
-        private BindingList<CartItem<T>> barang;
+        private BindingList<CartItem<T>> barang ;
 
         public Cart()
         {

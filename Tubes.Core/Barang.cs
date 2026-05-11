@@ -7,7 +7,7 @@
         public int harga { get; set; }
         public int stok { get; set; }
         public Barang() { }
-        public Barang(int id, string nama, int harga, int stok)
+        public Barang(int id, string nama, int harga, int stok) 
         {
             this.id = id;
             this.nama = nama;
