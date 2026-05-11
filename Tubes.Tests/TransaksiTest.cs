@@ -18,8 +18,9 @@ namespace Tubes.Tests
         public void ManipulasiFileSesuai()
         {
             var car = new Cart<Barang>();
+            var paymentType = "Cash";
 
-            Transaksi.TambahTransaksi(car);
+            Transaksi.TambahTransaksi(car, paymentType);
             var jumlahAwal = Transaksi.ListTransaksi.Count;
 
 
@@ -34,9 +35,10 @@ namespace Tubes.Tests
         public void TanggalWaktuTransaksiSesuai()
         {
             var car = new Cart<Barang>();
+            var paymentType = "Cash";
             var tanggalSeharusnya = DateTime.Now.ToString("yyyyMMdd");
 
-            Transaksi.TambahTransaksi(car);
+            Transaksi.TambahTransaksi(car, paymentType);
 
             Assert.AreEqual(tanggalSeharusnya, Transaksi.ListTransaksi.Values.Last().tanggal);
             Assert.IsNotNull(Transaksi.ListTransaksi.Values.Last().waktu);
@@ -45,14 +47,13 @@ namespace Tubes.Tests
         public void TambahTransaksiSesuai()
         {
             var car = new Cart<Barang>();
+            var paymentType = "Cash";
             var jumlahAwal = Transaksi.ListTransaksi.Count;
 
-            Transaksi.TambahTransaksi(car);
+            Transaksi.TambahTransaksi(car, paymentType);
             var jumlahAkhir = Transaksi.ListTransaksi.Count;
 
             Assert.IsGreaterThan(jumlahAwal, jumlahAkhir);
         }
-
-
     }
 }
