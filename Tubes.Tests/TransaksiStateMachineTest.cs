@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tubes.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Tubes.Core;
 
 namespace Tubes.Tests
 {
@@ -17,7 +13,7 @@ namespace Tubes.Tests
             sm = new TransaksiStateMachine();
         }
 
-        // UNIT TESTS
+        // UNIT TESTS - memastikan setiap transisi state berjalan sesuai aturan
 
         [TestMethod]
         public void StartBelanja_DariIdle_StateJadiBelanja()
@@ -70,7 +66,7 @@ namespace Tubes.Tests
         }
 
 
-        // Defensive Tests
+        // Defensive Tests - memastikan transisi yang tidak valid melempar exception
 
         [TestMethod]
         public void StartBelanja_DariBukanIdle_HarusThrowException()
@@ -128,6 +124,54 @@ namespace Tubes.Tests
                 Assert.Fail("Harusnya throw exception");
             }
             catch (InvalidOperationException) { }
+        }
+
+        // Performance Test - memastikan state machine tetap responsif meskipun ada banyak transaksi
+
+        [TestMethod]
+        public void PerformanceTest_MultipleTransactions()
+        {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+
+            for (int i = 0; i < 1000; i++)
+            {
+                sm.StartBelanja();
+                sm.Checkout();
+                sm.Bayar();
+                sm.reset();
+            }
+
+            sw.Stop();
+            Assert.IsTrue(sw.ElapsedMilliseconds < 1000, $"Terlalu lambat: {sw.ElapsedMilliseconds}ms");
+            Assert.AreEqual(TransaksiState.Idle, sm.CurrentState);
+        }
+        [TestMethod]
+        public void PerformanceTest_GenericCart_TambahBanyakBarang()
+        {
+            var cart = new Cart<Barang>();
+            var barang = new Barang(1, "Buku", 5000, 99999);
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+
+            for (int i = 0; i < 1000; i++)
+                cart.TambahBarang(barang, 1);
+
+            sw.Stop();
+            Assert.IsTrue(sw.ElapsedMilliseconds < 1000, $"TambahBarang terlalu lambat: {sw.ElapsedMilliseconds}ms");
+        }
+
+        [TestMethod]
+        public void PerformanceTest_GenericCart_TotalHarga()
+        {
+            var cart = new Cart<Barang>();
+            var barang = new Barang(1, "Buku", 5000, 99999);
+            for (int i = 0; i < 1000; i++)
+                cart.TambahBarang(barang, 1);
+
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            cart.TotalHarga();
+            sw.Stop();
+
+            Assert.IsTrue(sw.ElapsedMilliseconds < 1000, $"TotalHarga terlalu lambat: {sw.ElapsedMilliseconds}ms");
         }
     }
 }
