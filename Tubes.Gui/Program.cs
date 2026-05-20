@@ -11,8 +11,7 @@ namespace Tubes.Gui
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Katalog.LoadData();
-            // TODO: GANTI KE LOGIN FORM KETIKA SUDAH SELESAI
-            Application.Run(new Form1());
+            Application.Run(new Kasir());
         }
     }
 }
