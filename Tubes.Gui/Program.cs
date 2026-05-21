@@ -11,7 +11,7 @@ namespace Tubes.Gui
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Katalog.LoadData();
-            Application.Run(new ManajemenBarangPage());
+            Application.Run(new Kasir());
         }
     }
 }
