@@ -65,7 +65,7 @@ namespace Tubes.ConsoleApp
                         break;
                     case 2:
                         sm.Checkout();
-                        paymentType = await MenuPembayaran(pt);
+                        paymentType = await MenuPembayaran();
                         break;
                     case 3:
                         sm.Bayar();
@@ -93,12 +93,12 @@ namespace Tubes.ConsoleApp
 
         }
 
-        private static async Task<string> MenuPembayaran(PaymentMethod pt)
+        private static async Task<string> MenuPembayaran()
         {
             int count = 1;
 
             Console.WriteLine("Jenis Pembayaran:");
-            string[] paymentTypes = pt.getPaymentType();
+            string[] paymentTypes = PaymentMethod.getPaymentType();
             foreach (var paymentType in paymentTypes)
             {
                 Console.WriteLine($"{count}. {paymentType}");
@@ -107,7 +107,7 @@ namespace Tubes.ConsoleApp
             Console.Write("Metode Pembayaran: ");
             int.TryParse(Console.ReadLine(), out int pilihanPayment);
 
-            return pt.Payment(pilihanPayment);
+            return PaymentMethod.Payment(pilihanPayment);
         }
 
         static void PrintLogTransaksi()

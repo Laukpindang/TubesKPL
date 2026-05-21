@@ -11,6 +11,7 @@ namespace Tubes.Gui
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Katalog.LoadData();
+            Transaksi.LoadTransaksi();
             Application.Run(new Login());
         }
     }

@@ -12,4 +12,10 @@
     <ProjectReference Include="..\Tubes.Core\Tubes.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="RiwayatTransaksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
