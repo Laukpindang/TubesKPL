@@ -9,9 +9,7 @@ namespace Tubes.Core
         public static void LoadData()
         {
             string baseFolder = AppDomain.CurrentDomain.BaseDirectory;
-            string filePath = Path.Combine(
-                                    AppDomain.CurrentDomain.BaseDirectory,
-                                    @"..\..\..\..\dataBarang.json");
+            string filePath = Path.Combine(baseFolder, "dataBarang.json");
             if (!File.Exists(filePath))
             {
                 throw new FileNotFoundException($"File json tidak ditemukan di: {filePath}");

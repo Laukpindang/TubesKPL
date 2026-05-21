@@ -6,7 +6,7 @@ namespace Tubes.ConsoleApp
     [MemoryDiagnoser]
     public class TransaksiBenchmark
     {
-        private Cart _tempCart;
+        private Cart<Barang> _tempCart;
         private string paymentType;
 
         //Test dari beberapa ukuran riwayat
@@ -20,7 +20,7 @@ namespace Tubes.ConsoleApp
             Transaksi.TestFile();
             Transaksi.ClearTransaksi();
 
-            _tempCart = new Cart();
+            _tempCart = new Cart<Barang>();
             paymentType = "Cash";
             for (int i = 0; i < TransactionCount; i++)
             {
