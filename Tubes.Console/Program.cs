@@ -24,7 +24,7 @@ namespace Tubes.ConsoleApp
         }
 
 
-        static async Task MenuTransaksi(Cart<Barang> cart, TransaksiStateMachine sm, PaymentMethod pt)
+        static async Task MenuTransaksi(Cart cart, TransaksiStateMachine sm, PaymentMethod pt)
         {
             sm.StartBelanja();
             pt.StartBelanja();
@@ -180,7 +180,7 @@ namespace Tubes.ConsoleApp
 
 
 
-        static void TambahBarang(Cart<Barang> cart) 
+        static void TambahBarang(Cart cart) 
         {
             Console.Write("Masukkan nama barang: ");
             string namaBarang = Console.ReadLine();
@@ -205,7 +205,7 @@ namespace Tubes.ConsoleApp
 
 
         }
-        static void TampilkanKeranjang(Cart<Barang> cart) 
+        static void TampilkanKeranjang(Cart cart) 
         {
             Console.WriteLine("Isi keranjang:");
             foreach (var item in cart.GetBarang())
@@ -218,7 +218,7 @@ namespace Tubes.ConsoleApp
 
         static async Task Main(string[] args)
         {
-            Cart<Barang> cart = new Cart<Barang>();
+            Cart cart = new Cart();
             TransaksiStateMachine sm = new TransaksiStateMachine();
             PaymentMethod pt = new PaymentMethod();
             Katalog.LoadData();
