@@ -57,7 +57,7 @@ namespace Tubes.Core
             File.WriteAllText(_filepath, jsonString);
         }
 
-        public static void TambahTransaksi(Cart<Barang> keranjang, string paymentType) 
+        public static void TambahTransaksi(Cart keranjang, string paymentType) 
         {
             DetailTransaksi detail = new DetailTransaksi(keranjang, paymentType);
             ListTransaksi.Add(MembuatKode(detail), detail);
@@ -85,7 +85,7 @@ namespace Tubes.Core
         [JsonPropertyName("waktu")]
         public string waktu { get; init; }
         [JsonPropertyName("barang")]
-        public BindingList<CartItem<Barang>> barang { get; init; }
+        public BindingList<CartItem> barang { get; init; }
         [JsonPropertyName("total")]
         public int total { get; init; }
         [JsonPropertyName("jenis_pembayaran")]
@@ -93,7 +93,7 @@ namespace Tubes.Core
 
         public DetailTransaksi() { }
 
-        public DetailTransaksi(Cart<Barang> keranjang, String paymentType) 
+        public DetailTransaksi(Cart keranjang, String paymentType) 
         {
             tanggal = DateTime.Now.ToString("yyyyMMdd");
             waktu = DateTime.Now.ToString("HH:mm:ss");

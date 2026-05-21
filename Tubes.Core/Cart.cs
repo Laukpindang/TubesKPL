@@ -2,16 +2,16 @@
 
 namespace Tubes.Core
 {
-    public class Cart<T> where T : IBarang
+    public class Cart
     {
-        private BindingList<CartItem<T>> barang ;
+        private BindingList<CartItem> barang ;
 
         public Cart()
         {
-            barang = new BindingList<CartItem<T>>();
+            barang = new BindingList<CartItem>();
         }
 
-        public void TambahBarang(T b, int jumlah)
+        public void TambahBarang(Barang b, int jumlah)
         {
             var itemDitemukan = barang.FirstOrDefault(item => item.barang.nama == b.nama);
             if (itemDitemukan != null)
@@ -24,7 +24,7 @@ namespace Tubes.Core
             }
             else
             {
-                barang.Add(new CartItem<T>(b, jumlah));
+                barang.Add(new CartItem(b, jumlah));
             }
         }
 
@@ -38,7 +38,7 @@ namespace Tubes.Core
             return total;
         }
 
-        public BindingList<CartItem<T>> GetBarang()
+        public BindingList<CartItem> GetBarang()
         {
             return barang;
         }
