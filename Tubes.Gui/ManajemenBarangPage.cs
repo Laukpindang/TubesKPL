@@ -156,7 +156,7 @@ namespace Tubes.Gui
         #region Form
         private FlowLayoutPanel FormBarang(Panel container)
         {
-            var FormPanel = new FlowLayoutPanel();
+            FormPanel = new FlowLayoutPanel();
             FormPanel.FlowDirection = FlowDirection.TopDown;
             FormPanel.Size = new Size(container.Width - 8, container.Height - 8);
             FormPanel.Font = new Font("Segoe UI", 9F);
@@ -184,15 +184,7 @@ namespace Tubes.Gui
             StockText = new TextBox();
             StockText.Width = tbWidth;
 
-            if(currentState == ManajemenMode.Edit)
-            {
-                IdText.Text = TabelBarang.SelectedRows[0].Cells["id"].Value.ToString();
-                NameText.Text = TabelBarang.SelectedRows[0].Cells["nama"].Value.ToString();
-                PriceText.Text = TabelBarang.SelectedRows[0].Cells["harga"].Value.ToString();
-                StockText.Text = TabelBarang.SelectedRows[0].Cells["stok"].Value.ToString();
-
-                IdText.Enabled = false;
-            }
+            if(currentState == ManajemenMode.Edit) { FilledEditForm(); }
 
             #region Label + TextBox Addition
             FormPanel.Controls.Add(labelId);
@@ -223,7 +215,7 @@ namespace Tubes.Gui
 
             if(currentState == ManajemenMode.Tambah)
             {
-                btnSimpan.Click += btnSimpan_Click;
+                btnSimpan.Click += btnTambah_Click;
             }
             else if (currentState == ManajemenMode.Edit)
             {
@@ -244,13 +236,50 @@ namespace Tubes.Gui
 
         #endregion
 
-        #region Btn event handler
-
+        #region Actions
         private void ToFormAction()
         {
             ContainerSide.Controls.Clear();
             ContainerSide.Controls.Add(FormBarang(ContainerSide));
         }
+
+        private void ClearForm()
+        {
+            IdText.Text = "";
+            NameText.Text = "";
+            PriceText.Text = "";
+            StockText.Text = "";
+        }
+
+        private void FilledEditForm()
+        {
+            IdText.Text = TabelBarang.SelectedRows[0].Cells["id"].Value.ToString();
+            NameText.Text = TabelBarang.SelectedRows[0].Cells["nama"].Value.ToString();
+            PriceText.Text = TabelBarang.SelectedRows[0].Cells["harga"].Value.ToString();
+            StockText.Text = TabelBarang.SelectedRows[0].Cells["stok"].Value.ToString();
+            IdText.Enabled = false;
+        }
+
+        private OperationResult CheckFormEmpty()
+        {
+            if (string.IsNullOrWhiteSpace(IdText.Text) ||
+                string.IsNullOrWhiteSpace(NameText.Text) ||
+                string.IsNullOrWhiteSpace(PriceText.Text) ||
+                string.IsNullOrWhiteSpace(StockText.Text))
+            {
+                MessageBox.Show("Semua field harus diisi", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if(currentState == ManajemenMode.Tambah) { ClearForm(); }
+                if(currentState == ManajemenMode.Edit) { FilledEditForm(); }
+
+                return OperationResult.Fail("Form tidak lengkap");
+            }
+            return OperationResult.Success();
+        }
+
+        #endregion
+
+        #region Btn event handler
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -271,8 +300,10 @@ namespace Tubes.Gui
             ToFormAction();
         }
 
-        private void btnSimpan_Click(object sender, EventArgs e)
+        private void btnTambah_Click(object sender, EventArgs e)
         {
+            if (CheckFormEmpty().IsSuccess == false) return;
+
             var id = int.Parse(IdText.Text);
             var name = NameText.Text;
             var price = int.Parse(PriceText.Text);
@@ -303,14 +334,13 @@ namespace Tubes.Gui
             Core.ManajemenBarang.SaveDataBarang();
             MessageBox.Show("Barang berhasil ditambahkan", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            IdText.Text = "";
-            NameText.Text = "";
-            PriceText.Text = "";
-            StockText.Text = "";
+            ClearForm();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (CheckFormEmpty().IsSuccess == false) return;
+
             var id = int.Parse(IdText.Text);
             var name = NameText.Text;
             var price = int.Parse(PriceText.Text);
@@ -334,6 +364,8 @@ namespace Tubes.Gui
 
             Core.ManajemenBarang.SaveDataBarang();
             MessageBox.Show("Barang berhasil diperbarui", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            ClearForm();
         }
 
         private void btnHapus_Click(object sender, EventArgs e)

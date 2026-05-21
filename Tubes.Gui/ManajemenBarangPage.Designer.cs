@@ -49,6 +49,8 @@
         private Button btnHapus;
         private DataGridView TabelBarang;
 
+        private FlowLayoutPanel FormPanel;
+
         #region Tambah Form Component
         private TextBox IdText;
         private TextBox NameText;
