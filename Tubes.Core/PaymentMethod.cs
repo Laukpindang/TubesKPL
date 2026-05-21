@@ -22,7 +22,7 @@ namespace Tubes.Core
             CurrentState = PaymentType.Inactive;
         }
 
-        public string[] getPaymentType() 
+        public static string[] getPaymentType() 
         {
             int min = (int)PaymentType.Inactive + 1;
             int max = (int)PaymentType.Tidak_Ada - 1;

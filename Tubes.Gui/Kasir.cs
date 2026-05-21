@@ -17,9 +17,15 @@ namespace Tubes.Gui
             {
                 lblNamaKasir.Text = "Kasir Bertugas: {SesiSaatIni.PenggunaAktif.Username}";
             }
+            
             inputBarang.DataSource = Katalog.GetAllBarang();
             inputBarang.DisplayMember = "nama";
             inputBarang.ValueMember = "nama";
+
+            inputPayment.DataSource = PaymentMethod.getPaymentType();
+            inputPayment.DisplayMember = "";
+            inputPayment.ValueMember = "";
+
             _service.GetDaftarKeranjang().ListChanged += PerbaruiTotalHarga;
         }
         private void PerbaruiTotalHarga(object sender, ListChangedEventArgs e)
@@ -60,7 +66,7 @@ namespace Tubes.Gui
             }
 
             // Serahkan ke Service untuk diproses
-            OperationResult hasil = _service.ProsesPembayaran(uangBayar);
+            OperationResult hasil = _service.ProsesPembayaran(uangBayar, inputPayment.Text);
 
             if (!hasil.IsSuccess)
             {

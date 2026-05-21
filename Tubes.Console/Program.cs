@@ -24,7 +24,7 @@ namespace Tubes.ConsoleApp
         }
 
 
-        static async Task MenuTransaksi(Cart<Barang> cart, TransaksiStateMachine sm, PaymentMethod pt)
+        static async Task MenuTransaksi(Cart cart, TransaksiStateMachine sm, PaymentMethod pt)
         {
             sm.StartBelanja();
             pt.StartBelanja();
@@ -65,7 +65,7 @@ namespace Tubes.ConsoleApp
                         break;
                     case 2:
                         sm.Checkout();
-                        paymentType = await MenuPembayaran(pt);
+                        paymentType = await MenuPembayaran();
                         break;
                     case 3:
                         sm.Bayar();
@@ -93,12 +93,12 @@ namespace Tubes.ConsoleApp
 
         }
 
-        private static async Task<string> MenuPembayaran(PaymentMethod pt)
+        private static async Task<string> MenuPembayaran()
         {
             int count = 1;
 
             Console.WriteLine("Jenis Pembayaran:");
-            string[] paymentTypes = pt.getPaymentType();
+            string[] paymentTypes = PaymentMethod.getPaymentType();
             foreach (var paymentType in paymentTypes)
             {
                 Console.WriteLine($"{count}. {paymentType}");
@@ -107,7 +107,7 @@ namespace Tubes.ConsoleApp
             Console.Write("Metode Pembayaran: ");
             int.TryParse(Console.ReadLine(), out int pilihanPayment);
 
-            return pt.Payment(pilihanPayment);
+            return PaymentMethod.Payment(pilihanPayment);
         }
 
         static void PrintLogTransaksi()
@@ -180,7 +180,7 @@ namespace Tubes.ConsoleApp
 
 
 
-        static void TambahBarang(Cart<Barang> cart) 
+        static void TambahBarang(Cart cart) 
         {
             Console.Write("Masukkan nama barang: ");
             string namaBarang = Console.ReadLine();
@@ -205,7 +205,7 @@ namespace Tubes.ConsoleApp
 
 
         }
-        static void TampilkanKeranjang(Cart<Barang> cart) 
+        static void TampilkanKeranjang(Cart cart) 
         {
             Console.WriteLine("Isi keranjang:");
             foreach (var item in cart.GetBarang())
@@ -218,7 +218,7 @@ namespace Tubes.ConsoleApp
 
         static async Task Main(string[] args)
         {
-            Cart<Barang> cart = new Cart<Barang>();
+            Cart cart = new Cart();
             TransaksiStateMachine sm = new TransaksiStateMachine();
             PaymentMethod pt = new PaymentMethod();
             Katalog.LoadData();
