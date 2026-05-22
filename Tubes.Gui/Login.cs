@@ -51,6 +51,7 @@ namespace Tubes.Gui
             {
                 case FlowLayoutPanel flowPanel:
                     flowPanel.FlowDirection = FlowDirection.LeftToRight;
+                    flowPanel.WrapContents = false;
                     break;
 
                 case TableLayoutPanel tablePanel:
