@@ -1,0 +1,197 @@
+{
+    "202505010001": {
+        "tanggal": "20250501",
+        "waktu": "09:15:22",
+        "barang": [
+            {
+                "namaBarang": "Indomie Goreng",
+                "harga": 3500,
+                "jumlah": 5
+            },
+            {
+                "namaBarang": "Teh Botol",
+                "harga": 5000,
+                "jumlah": 2
+            }
+        ],
+        "total": 27500,
+        "jenis_pembayaran": "Tunai"
+    },
+    "202505020002": {
+        "tanggal": "20250502",
+        "waktu": "11:30:45",
+        "barang": [
+            {
+                "namaBarang": "Aqua 600ml",
+                "harga": 4000,
+                "jumlah": 3
+            },
+            {
+                "namaBarang": "Roti Tawar",
+                "harga": 12000,
+                "jumlah": 1
+            }
+        ],
+        "total": 24000,
+        "jenis_pembayaran": "E-Wallet"
+    },
+    "202505050003": {
+        "tanggal": "20250505",
+        "waktu": "14:05:10",
+        "barang": [
+            {
+                "namaBarang": "Mie Sedaap",
+                "harga": 3000,
+                "jumlah": 10
+            },
+            {
+                "namaBarang": "Kecap Bango",
+                "harga": 18000,
+                "jumlah": 1
+            },
+            {
+                "namaBarang": "Gula Pasir 1kg",
+                "harga": 15000,
+                "jumlah": 2
+            }
+        ],
+        "total": 78000,
+        "jenis_pembayaran": "Kartu"
+    },
+    "202505080004": {
+        "tanggal": "20250508",
+        "waktu": "08:45:33",
+        "barang": [
+            {
+                "namaBarang": "Sabun Lifebuoy",
+                "harga": 8000,
+                "jumlah": 2
+            },
+            {
+                "namaBarang": "Shampoo Clear",
+                "harga": 22000,
+                "jumlah": 1
+            }
+        ],
+        "total": 38000,
+        "jenis_pembayaran": "Tunai"
+    },
+    "202505100005": {
+        "tanggal": "20250510",
+        "waktu": "16:20:55",
+        "barang": [
+            {
+                "namaBarang": "Aqua 1500ml",
+                "harga": 7000,
+                "jumlah": 4
+            },
+            {
+                "namaBarang": "Biskuit Roma",
+                "harga": 9500,
+                "jumlah": 3
+            }
+        ],
+        "total": 56500,
+        "jenis_pembayaran": "E-Wallet"
+    },
+    "202505130006": {
+        "tanggal": "20250513",
+        "waktu": "10:10:05",
+        "barang": [
+            {
+                "namaBarang": "Indomie Kuah",
+                "harga": 3500,
+                "jumlah": 8
+            },
+            {
+                "namaBarang": "Telur 1 Papan",
+                "harga": 55000,
+                "jumlah": 1
+            }
+        ],
+        "total": 83000,
+        "jenis_pembayaran": "Tunai"
+    },
+    "202505150007": {
+        "tanggal": "20250515",
+        "waktu": "13:25:40",
+        "barang": [
+            {
+                "namaBarang": "Minyak Goreng 2L",
+                "harga": 35000,
+                "jumlah": 1
+            },
+            {
+                "namaBarang": "Tepung Terigu 1kg",
+                "harga": 12000,
+                "jumlah": 2
+            }
+        ],
+        "total": 59000,
+        "jenis_pembayaran": "Kartu"
+    },
+    "202505180008": {
+        "tanggal": "20250518",
+        "waktu": "09:00:15",
+        "barang": [
+            {
+                "namaBarang": "Susu Ultra 1L",
+                "harga": 18000,
+                "jumlah": 2
+            },
+            {
+                "namaBarang": "Keju Kraft",
+                "harga": 25000,
+                "jumlah": 1
+            },
+            {
+                "namaBarang": "Roti Tawar",
+                "harga": 12000,
+                "jumlah": 2
+            }
+        ],
+        "total": 85000,
+        "jenis_pembayaran": "E-Wallet"
+    },
+    "202505200009": {
+        "tanggal": "20250520",
+        "waktu": "15:45:30",
+        "barang": [
+            {
+                "namaBarang": "Aqua 600ml",
+                "harga": 4000,
+                "jumlah": 6
+            },
+            {
+                "namaBarang": "Teh Pucuk",
+                "harga": 5000,
+                "jumlah": 4
+            }
+        ],
+        "total": 44000,
+        "jenis_pembayaran": "Tunai"
+    },
+    "202505220010": {
+        "tanggal": "20250522",
+        "waktu": "11:55:00",
+        "barang": [
+            {
+                "namaBarang": "Pasta Gigi Pepsodent",
+                "harga": 13000,
+                "jumlah": 2
+            },
+            {
+                "namaBarang": "Sabun Mandi Dove",
+                "harga": 12000,
+                "jumlah": 3
+            },
+            {
+                "namaBarang": "Sikat Gigi",
+                "harga": 8000,
+                "jumlah": 2
+            }
+        ],
+        "total": 78000,
+        "jenis_pembayaran": "Kartu"
+    }
+}

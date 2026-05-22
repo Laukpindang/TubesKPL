@@ -17,7 +17,7 @@ namespace Tubes.Tests
         [TestMethod]
         public void ManipulasiFileSesuai()
         {
-            var car = new Cart<Barang>();
+            var car = new Cart();
             var paymentType = "Cash";
 
             Transaksi.TambahTransaksi(car, paymentType);
@@ -34,7 +34,7 @@ namespace Tubes.Tests
         [TestMethod]
         public void TanggalWaktuTransaksiSesuai()
         {
-            var car = new Cart<Barang>();
+            var car = new Cart();
             var paymentType = "Cash";
             var tanggalSeharusnya = DateTime.Now.ToString("yyyyMMdd");
 
@@ -46,7 +46,7 @@ namespace Tubes.Tests
         [TestMethod]
         public void TambahTransaksiSesuai()
         {
-            var car = new Cart<Barang>();
+            var car = new Cart();
             var paymentType = "Cash";
             var jumlahAwal = Transaksi.ListTransaksi.Count;
 
