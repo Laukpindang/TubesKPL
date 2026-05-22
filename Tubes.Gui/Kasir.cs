@@ -15,11 +15,17 @@ namespace Tubes.Gui
             listBarang.DataSource = _service.GetDaftarKeranjang();
             if (Session.CurrentUser != null)
             {
-                lblNamaKasir.Text = "Kasir Bertugas: {SesiSaatIni.PenggunaAktif.Username}";
+                lblNamaKasir.Text = $"Kasir Bertugas: {Session.CurrentUser.Username}";
             }
+
             inputBarang.DataSource = Katalog.GetAllBarang();
             inputBarang.DisplayMember = "nama";
             inputBarang.ValueMember = "nama";
+
+            inputPayment.DataSource = PaymentMethod.getPaymentType();
+            inputPayment.DisplayMember = "";
+            inputPayment.ValueMember = "";
+
             _service.GetDaftarKeranjang().ListChanged += PerbaruiTotalHarga;
         }
         private void PerbaruiTotalHarga(object sender, ListChangedEventArgs e)
@@ -60,7 +66,7 @@ namespace Tubes.Gui
             }
 
             // Serahkan ke Service untuk diproses
-            OperationResult hasil = _service.ProsesPembayaran(uangBayar);
+            OperationResult hasil = _service.ProsesPembayaran(uangBayar, inputPayment.Text);
 
             if (!hasil.IsSuccess)
             {

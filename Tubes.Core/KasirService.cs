@@ -57,7 +57,7 @@ namespace Tubes.Core
         {
             return _cart.GetBarang().Sum(item => item.subTotal);
         }
-        public OperationResult ProsesPembayaran(int uangBayar)
+        public OperationResult ProsesPembayaran(int uangBayar, string metodePembayaran)
         {
             int total = HitungTotalBelanja();
 
@@ -74,7 +74,7 @@ namespace Tubes.Core
             int kembalian = uangBayar - total;
 
             // MASUKKAN HASIL TRANSAKSI KE LOG JSON DISINI!!!!
-
+            Transaksi.TambahTransaksi(_cart, metodePembayaran, uangBayar);
             // KOSONGKAN KERANJANG SETELAH TRANSAKSI BERHASIL
             _cart.GetBarang().Clear();
 
