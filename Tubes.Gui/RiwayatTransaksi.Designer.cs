@@ -45,10 +45,11 @@
             // 
             // listRiwayatTransaksi
             // 
+            listRiwayatTransaksi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listRiwayatTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             listRiwayatTransaksi.Location = new Point(12, 32);
             listRiwayatTransaksi.Name = "listRiwayatTransaksi";
-            listRiwayatTransaksi.RowHeadersWidth = 51;
+            listRiwayatTransaksi.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             listRiwayatTransaksi.Size = new Size(776, 371);
             listRiwayatTransaksi.TabIndex = 1;
             // 

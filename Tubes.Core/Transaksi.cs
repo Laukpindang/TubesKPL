@@ -86,9 +86,9 @@ namespace Tubes.Core
         public string waktu { get; init; }
         [JsonPropertyName("barang")]
         public BindingList<CartItem> barang { get; init; }
-        [JsonPropertyName("total")]
-        public int jumlah_pembayaran { get; init; }
         [JsonPropertyName("jumlah_pembayaran")]
+        public int jumlah_pembayaran { get; init; }
+        [JsonPropertyName("total")]
         public int total { get; init; }
         [JsonPropertyName("jenis_pembayaran")]
         public string jenis_pembayaran { get; init; }
