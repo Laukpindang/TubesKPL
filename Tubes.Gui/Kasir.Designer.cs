@@ -99,7 +99,7 @@
             listBarang.RowHeadersVisible = false;
             listBarang.RowHeadersWidth = 62;
             listBarang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            listBarang.Size = new Size(547, 180);
+            listBarang.Size = new Size(580, 180);
             listBarang.TabIndex = 5;
             // 
             // cartItemBindingSource
@@ -130,7 +130,7 @@
             // lblTotalHarga
             // 
             lblTotalHarga.AutoSize = true;
-            lblTotalHarga.Location = new Point(318, 25);
+            lblTotalHarga.Location = new Point(351, 25);
             lblTotalHarga.Margin = new Padding(2, 0, 2, 0);
             lblTotalHarga.Name = "lblTotalHarga";
             lblTotalHarga.Size = new Size(87, 20);
@@ -140,7 +140,7 @@
             // lblBayar
             // 
             lblBayar.AutoSize = true;
-            lblBayar.Location = new Point(318, 63);
+            lblBayar.Location = new Point(351, 62);
             lblBayar.Margin = new Padding(2, 0, 2, 0);
             lblBayar.Name = "lblBayar";
             lblBayar.Size = new Size(140, 20);
@@ -149,7 +149,7 @@
             // 
             // inputUangBayar
             // 
-            inputUangBayar.Location = new Point(318, 85);
+            inputUangBayar.Location = new Point(351, 84);
             inputUangBayar.Margin = new Padding(2);
             inputUangBayar.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             inputUangBayar.Name = "inputUangBayar";
@@ -158,7 +158,7 @@
             // 
             // btnBayar
             // 
-            btnBayar.Location = new Point(486, 197);
+            btnBayar.Location = new Point(519, 197);
             btnBayar.Margin = new Padding(2);
             btnBayar.Name = "btnBayar";
             btnBayar.Size = new Size(90, 27);
@@ -170,7 +170,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(318, 128);
+            label3.Location = new Point(351, 128);
             label3.Name = "label3";
             label3.Size = new Size(146, 20);
             label3.TabIndex = 12;
@@ -180,7 +180,7 @@
             // 
             inputPayment.FormattingEnabled = true;
             inputPayment.Items.AddRange(new object[] { "Tunai", "Kartu", "E_Wallet" });
-            inputPayment.Location = new Point(318, 151);
+            inputPayment.Location = new Point(351, 149);
             inputPayment.Name = "inputPayment";
             inputPayment.Size = new Size(258, 28);
             inputPayment.TabIndex = 13;

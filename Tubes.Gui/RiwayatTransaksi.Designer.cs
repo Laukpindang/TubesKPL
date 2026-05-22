@@ -30,7 +30,6 @@
         {
             label1 = new Label();
             listRiwayatTransaksi = new DataGridView();
-            btn = new Button();
             ((System.ComponentModel.ISupportInitialize)listRiwayatTransaksi).BeginInit();
             SuspendLayout();
             // 
@@ -39,9 +38,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(124, 20);
             label1.TabIndex = 0;
-            label1.Text = "label1";
+            label1.Text = "Riwayat Transaksi";
             // 
             // listRiwayatTransaksi
             // 
@@ -50,25 +49,14 @@
             listRiwayatTransaksi.Location = new Point(12, 32);
             listRiwayatTransaksi.Name = "listRiwayatTransaksi";
             listRiwayatTransaksi.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            listRiwayatTransaksi.Size = new Size(776, 371);
+            listRiwayatTransaksi.Size = new Size(616, 406);
             listRiwayatTransaksi.TabIndex = 1;
-            // 
-            // btn
-            // 
-            btn.Location = new Point(351, 409);
-            btn.Name = "btn";
-            btn.Size = new Size(94, 29);
-            btn.TabIndex = 2;
-            btn.Text = "Kembali";
-            btn.UseVisualStyleBackColor = true;
-            btn.Click += btn_Click;
             // 
             // RiwayatTransaksi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btn);
+            ClientSize = new Size(640, 450);
             Controls.Add(listRiwayatTransaksi);
             Controls.Add(label1);
             Name = "RiwayatTransaksi";
@@ -82,6 +70,5 @@
 
         private Label label1;
         private DataGridView listRiwayatTransaksi;
-        private Button btn;
     }
 }

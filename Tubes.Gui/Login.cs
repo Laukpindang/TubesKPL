@@ -16,7 +16,7 @@ namespace Tubes.Gui
         {
             InitializeComponent();
             ComponentPlacing();
-            this.CenterToScreen();
+            this.CenteredPanel();
             txtPassword.UseSystemPasswordChar = true;
         }
 
@@ -44,13 +44,14 @@ namespace Tubes.Gui
         }
         private void RowBoxProp(Panel panel)
         {
-            panel.Width = 300 - 8;
+            panel.Width = 400 - 8;
             panel.Height = 50;
 
             switch (panel)
             {
                 case FlowLayoutPanel flowPanel:
                     flowPanel.FlowDirection = FlowDirection.LeftToRight;
+                    flowPanel.WrapContents = false;
                     break;
 
                 case TableLayoutPanel tablePanel:
@@ -62,7 +63,7 @@ namespace Tubes.Gui
         private Panel CenteredPanel()
         {
             var centeredPanel = new FlowLayoutPanel();
-            centeredPanel.Width = 300;
+            centeredPanel.Width = 400;
             centeredPanel.Height = 200;
             centeredPanel.FlowDirection = FlowDirection.TopDown;
             return centeredPanel;
