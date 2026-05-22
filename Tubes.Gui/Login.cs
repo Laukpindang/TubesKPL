@@ -76,12 +76,14 @@ namespace Tubes.Gui
 
             if(type == "text") {
                 ltPanel.Controls.Add(label1);
+                txtUsername.BorderStyle = BorderStyle.FixedSingle;
                 ltPanel.Controls.Add(txtUsername);
                 return ltPanel;
             }
             else if (type == "password")
             {
                 ltPanel.Controls.Add(label2);
+                txtPassword.BorderStyle = BorderStyle.FixedSingle;
                 ltPanel.Controls.Add(txtPassword);
                 return ltPanel;
             }
