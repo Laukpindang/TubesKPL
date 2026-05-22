@@ -16,8 +16,35 @@ namespace Tubes.Gui
         public RiwayatTransaksi()
         {
             InitializeComponent();
+            ComponentPlacing();
             _service = new TransaksiService(Transaksi.ListTransaksi);
             listRiwayatTransaksi.DataSource = _service.GetRiwayatTransaksi();
+        }
+
+        private void ComponentPlacing()
+        {
+            label1.Text = "Riwayat Transaksi";
+            TabelRiwayatProp();
+        }
+
+        private void TabelRiwayatProp()
+        {
+            //Cells
+            listRiwayatTransaksi.RowHeadersVisible = false;
+
+            //Columns Sizing
+            listRiwayatTransaksi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            //Read Only
+            listRiwayatTransaksi.ReadOnly = true;
+            listRiwayatTransaksi.AllowUserToAddRows = false;
+            listRiwayatTransaksi.AllowUserToOrderColumns = false;
+            listRiwayatTransaksi.AllowUserToResizeColumns = false;
+            listRiwayatTransaksi.AllowUserToResizeRows = false;
+            listRiwayatTransaksi.AllowUserToDeleteRows = false;
+            listRiwayatTransaksi.MultiSelect = false;
+            listRiwayatTransaksi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
         }
 
         private void btn_Click(object sender, EventArgs e)

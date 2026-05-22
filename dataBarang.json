@@ -23,6 +23,12 @@
       "nama": "Tipe X",
       "harga": 3000,
       "stok": 10
+    },
+    {
+      "id": 5,
+      "nama": "Penggaris",
+      "harga": 10000,
+      "stok": 20
     }
   ]
 }
