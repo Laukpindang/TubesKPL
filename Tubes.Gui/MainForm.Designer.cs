@@ -47,15 +47,17 @@
             panelMenu.Controls.Add(btnKasir);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
+            panelMenu.Margin = new Padding(2);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(200, 450);
+            panelMenu.Size = new Size(160, 450);
             panelMenu.TabIndex = 0;
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(12, 172);
+            btnLogout.Location = new Point(10, 138);
+            btnLogout.Margin = new Padding(2);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(175, 34);
+            btnLogout.Size = new Size(140, 27);
             btnLogout.TabIndex = 4;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
@@ -63,18 +65,20 @@
             // 
             // button1
             // 
-            button1.Location = new Point(12, 132);
+            button1.Location = new Point(10, 106);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(175, 34);
+            button1.Size = new Size(140, 27);
             button1.TabIndex = 3;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
             // btnTransaksi
             // 
-            btnTransaksi.Location = new Point(12, 92);
+            btnTransaksi.Location = new Point(10, 74);
+            btnTransaksi.Margin = new Padding(2);
             btnTransaksi.Name = "btnTransaksi";
-            btnTransaksi.Size = new Size(175, 34);
+            btnTransaksi.Size = new Size(140, 27);
             btnTransaksi.TabIndex = 2;
             btnTransaksi.Text = "Riwayat Transaksi";
             btnTransaksi.UseVisualStyleBackColor = true;
@@ -82,9 +86,10 @@
             // 
             // btnBarang
             // 
-            btnBarang.Location = new Point(12, 52);
+            btnBarang.Location = new Point(10, 42);
+            btnBarang.Margin = new Padding(2);
             btnBarang.Name = "btnBarang";
-            btnBarang.Size = new Size(175, 34);
+            btnBarang.Size = new Size(140, 27);
             btnBarang.TabIndex = 1;
             btnBarang.Text = "Kelola Barang";
             btnBarang.UseVisualStyleBackColor = true;
@@ -92,9 +97,10 @@
             // 
             // btnKasir
             // 
-            btnKasir.Location = new Point(12, 12);
+            btnKasir.Location = new Point(10, 10);
+            btnKasir.Margin = new Padding(2);
             btnKasir.Name = "btnKasir";
-            btnKasir.Size = new Size(175, 34);
+            btnKasir.Size = new Size(140, 27);
             btnKasir.TabIndex = 0;
             btnKasir.Text = "Kasir";
             btnKasir.UseVisualStyleBackColor = true;
@@ -103,21 +109,23 @@
             // panelKonten
             // 
             panelKonten.Dock = DockStyle.Fill;
-            panelKonten.Location = new Point(200, 0);
+            panelKonten.Location = new Point(160, 0);
+            panelKonten.Margin = new Padding(2);
             panelKonten.Name = "panelKonten";
-            panelKonten.Size = new Size(600, 450);
+            panelKonten.Size = new Size(640, 450);
             panelKonten.TabIndex = 1;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panelKonten);
             Controls.Add(panelMenu);
+            Margin = new Padding(2);
+            MinimumSize = new Size(818, 497);
             Name = "MainForm";
             Text = "MainForm";
-            WindowState = FormWindowState.Maximized;
             panelMenu.ResumeLayout(false);
             ResumeLayout(false);
         }
