@@ -7,7 +7,7 @@ namespace Tubes.Gui
     public class GuiUtil
     {
         // The centering method
-        public static void CenterChildPanel(Panel parent, Panel child)
+        public static void CenterChildPanel(Panel parent, Control child)
         {
             int centerX = (parent.ClientSize.Width - child.Width) / 2;
             int centerY = (parent.ClientSize.Height - child.Height) / 2;

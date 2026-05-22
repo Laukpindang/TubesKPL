@@ -28,6 +28,7 @@ namespace Tubes.Core
                 return OperationResult.Fail("Username atau password salah!");
             }
             // JIKA DITEMUKAN, KEMBALIKAN OPERATIONRESULT SUKSES
+            Session.SetCurrentUser(user);
             return OperationResult.Success();
         }
     }
