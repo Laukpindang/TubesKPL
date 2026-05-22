@@ -38,45 +38,48 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(223, 173);
+            label1.Location = new Point(195, 130);
             label1.Name = "label1";
-            label1.Padding = new Padding(41, 0, 0, 0);
-            label1.Size = new Size(123, 20);
+            label1.Padding = new Padding(36, 0, 0, 0);
+            label1.Size = new Size(102, 15);
             label1.TabIndex = 0;
             label1.Text = "Username :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(223, 215);
+            label2.Location = new Point(195, 161);
             label2.Name = "label2";
-            label2.Padding = new Padding(41, 0, 5, 0);
-            label2.Size = new Size(123, 20);
+            label2.Padding = new Padding(36, 0, 4, 0);
+            label2.Size = new Size(103, 15);
             label2.TabIndex = 1;
             label2.Text = "Password :";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(414, 173);
-            txtUsername.MaximumSize = new Size(125, 27);
+            txtUsername.Location = new Point(362, 130);
+            txtUsername.Margin = new Padding(3, 2, 3, 2);
+            txtUsername.MaximumSize = new Size(110, 27);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(125, 27);
+            txtUsername.Size = new Size(110, 23);
             txtUsername.TabIndex = 2;
             txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(414, 215);
-            txtPassword.MaximumSize = new Size(125, 27);
+            txtPassword.Location = new Point(362, 161);
+            txtPassword.Margin = new Padding(3, 2, 3, 2);
+            txtPassword.MaximumSize = new Size(110, 27);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(125, 27);
+            txtPassword.Size = new Size(110, 23);
             txtPassword.TabIndex = 3;
             // 
             // button1
             // 
-            button1.Location = new Point(362, 276);
+            button1.Location = new Point(317, 207);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(82, 22);
             button1.TabIndex = 4;
             button1.Text = "Login";
             button1.UseVisualStyleBackColor = true;
@@ -84,14 +87,15 @@
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(button1);
             Controls.Add(txtPassword);
             Controls.Add(txtUsername);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Login";
             Text = "LoginForm";
             ResumeLayout(false);
