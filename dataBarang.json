@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nama": "Buku",
-      "harga": 500,
+      "harga": 5000,
       "stok": 10
     },
     {
@@ -17,6 +17,12 @@
       "nama": "Pensil",
       "harga": 2000,
       "stok": 15
+    },
+    {
+      "id": 4,
+      "nama": "Tipe X",
+      "harga": 3000,
+      "stok": 10
     }
   ]
 }

@@ -14,10 +14,6 @@ namespace Tubes.Gui
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
             txtPassword.UseSystemPasswordChar = true;
         }
 
@@ -25,19 +21,33 @@ namespace Tubes.Gui
         {
             AuthService authService = new AuthService();
 
-            var result = authService.Login(
+            OperationResult result = authService.Login(
                 txtUsername.Text,
                 txtPassword.Text
             );
 
-            MessageBox.Show("Login berhasil");
-
             if (result.IsSuccess)
             {
-                Kasir kasirForm = new Kasir();
-                kasirForm.Show();
+                MessageBox.Show(
+                    $"Login berhasil, {Session.CurrentUser.Username}", 
+                    "Sukses", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information
+                );
+                
+                MainForm mainForm = new MainForm();
+                mainForm.Show();
 
                 this.Hide();
+            }
+            else
+            {
+                MessageBox.Show(
+                    $"Login gagal: {result.ErrorMessage}", 
+                    "Gagal", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error
+                );
             }
         }
 
