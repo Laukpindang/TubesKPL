@@ -58,6 +58,7 @@
             // txtUsername
             // 
             txtUsername.Location = new Point(414, 173);
+            txtUsername.MaximumSize = new Size(125, 27);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(125, 27);
             txtUsername.TabIndex = 2;
@@ -66,6 +67,7 @@
             // txtPassword
             // 
             txtPassword.Location = new Point(414, 215);
+            txtPassword.MaximumSize = new Size(125, 27);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(125, 27);
             txtPassword.TabIndex = 3;
