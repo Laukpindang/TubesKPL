@@ -39,6 +39,7 @@ namespace Tubes.Gui
 
         private void btnKasir_Click(object sender, EventArgs e)
         {
+            Katalog.LoadData();
             BukaHalaman(new Kasir());
         }
 
