@@ -15,9 +15,9 @@ namespace Tubes.Gui
             listBarang.DataSource = _service.GetDaftarKeranjang();
             if (Session.CurrentUser != null)
             {
-                lblNamaKasir.Text = "Kasir Bertugas: {SesiSaatIni.PenggunaAktif.Username}";
+                lblNamaKasir.Text = $"Kasir Bertugas: {Session.CurrentUser.Username}";
             }
-            
+
             inputBarang.DataSource = Katalog.GetAllBarang();
             inputBarang.DisplayMember = "nama";
             inputBarang.ValueMember = "nama";
