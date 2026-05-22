@@ -33,10 +33,6 @@
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             button1 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -44,24 +40,24 @@
             label1.AutoSize = true;
             label1.Location = new Point(223, 173);
             label1.Name = "label1";
-            label1.Padding = new Padding(0, 5, 0, 0);
-            label1.Size = new Size(82, 25);
+            label1.Padding = new Padding(41, 0, 0, 0);
+            label1.Size = new Size(123, 20);
             label1.TabIndex = 0;
             label1.Text = "Username :";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(223, 218);
+            label2.Location = new Point(223, 215);
             label2.Name = "label2";
-            label2.Padding = new Padding(0, 5, 5, 0);
-            label2.Size = new Size(82, 25);
+            label2.Padding = new Padding(41, 0, 5, 0);
+            label2.Size = new Size(123, 20);
             label2.TabIndex = 1;
             label2.Text = "Password :";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(311, 173);
+            txtUsername.Location = new Point(414, 173);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(125, 27);
             txtUsername.TabIndex = 2;
@@ -69,14 +65,14 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(311, 215);
+            txtPassword.Location = new Point(414, 215);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(125, 27);
             txtPassword.TabIndex = 3;
             // 
             // button1
             // 
-            button1.Location = new Point(284, 276);
+            button1.Location = new Point(362, 276);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 4;
