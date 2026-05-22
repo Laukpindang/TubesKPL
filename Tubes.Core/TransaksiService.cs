@@ -24,7 +24,7 @@ namespace Tubes.Core
         public string kode_pembelian { get; init; }
         public string tanggal { get; init; }
         public string waktu { get; init; }
-        public BindingList<CartItem> barang { get; init; }
+        public string barang { get; init; }
         public int jumlah_pembayaran { get; init; }
         public int total { get; init; }
         public string jenis_pembayaran { get; init; }
@@ -36,7 +36,7 @@ namespace Tubes.Core
             kode_pembelian = key;
             tanggal = detail.tanggal;
             waktu = detail.waktu;
-            barang = detail.barang;
+            barang = String.Join(", ", detail.barang.Select(b => $"{b.namaBarang} (x{b.jumlah})"));
             total = detail.total;
             jumlah_pembayaran = detail.jumlah_pembayaran;
             jenis_pembayaran = detail.jenis_pembayaran;

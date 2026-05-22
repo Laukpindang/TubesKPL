@@ -18,6 +18,7 @@ namespace Tubes.Gui
             InitializeComponent();
             _service = new TransaksiService(Transaksi.ListTransaksi);
             listRiwayatTransaksi.DataSource = _service.GetRiwayatTransaksi();
+            listRiwayatTransaksi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btn_Click(object sender, EventArgs e)
