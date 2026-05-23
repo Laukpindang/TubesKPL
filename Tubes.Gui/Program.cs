@@ -12,7 +12,7 @@ namespace Tubes.Gui
             Application.SetCompatibleTextRenderingDefault(false);
             Katalog.LoadData();
             Transaksi.LoadTransaksi();
-            Application.Run(new Login());
+            Application.Run(new LaporanPenjualan());
         }
     }
 }
