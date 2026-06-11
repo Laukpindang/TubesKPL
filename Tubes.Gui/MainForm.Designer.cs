@@ -30,7 +30,7 @@
         {
             panelMenu = new Panel();
             btnLogout = new Button();
-            button1 = new Button();
+            btnLaporan= new Button();
             btnTransaksi = new Button();
             btnBarang = new Button();
             btnKasir = new Button();
@@ -41,7 +41,7 @@
             // panelMenu
             // 
             panelMenu.Controls.Add(btnLogout);
-            panelMenu.Controls.Add(button1);
+            panelMenu.Controls.Add(btnLaporan);
             panelMenu.Controls.Add(btnTransaksi);
             panelMenu.Controls.Add(btnBarang);
             panelMenu.Controls.Add(btnKasir);
@@ -63,15 +63,16 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
-            // button1
+            // btnLaporan
             // 
-            button1.Location = new Point(10, 106);
-            button1.Margin = new Padding(2);
-            button1.Name = "button1";
-            button1.Size = new Size(140, 27);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnLaporan.Location = new Point(10, 106);
+            btnLaporan.Margin = new Padding(2);
+            btnLaporan.Name = "btnLaporan";
+            btnLaporan.Size = new Size(140, 27);
+            btnLaporan.TabIndex = 3;
+            btnLaporan.Text = "Laporan Penjualan";
+            btnLaporan.UseVisualStyleBackColor = true;
+            btnLaporan.Click += btnLaporan_Click;
             // 
             // btnTransaksi
             // 
@@ -137,7 +138,7 @@
         private Button btnBarang;
         private Button btnTransaksi;
         private Button btnLogout;
-        private Button button1;
+        private Button btnLaporan;
         private Panel panelKonten;
     }
 }

@@ -69,6 +69,11 @@ namespace Tubes.Gui
         {
             MuatDataTransaksi();
         }
+
+        private void cmbBulan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
     class BulanItem
