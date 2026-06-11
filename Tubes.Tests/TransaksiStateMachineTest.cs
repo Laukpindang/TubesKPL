@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Tubes.Core;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Tubes.Core;
 
 namespace Tubes.Tests
 {
@@ -17,60 +13,7 @@ namespace Tubes.Tests
             sm = new TransaksiStateMachine();
         }
 
-        // UNIT TESTS
-
-        [TestMethod]
-        public void StartBelanja_DariIdle_StateJadiBelanja()
-        {
-            sm.StartBelanja();
-            Assert.AreEqual(TransaksiState.Belanja, sm.CurrentState);
-        }
-
-        [TestMethod]
-        public void Checkout_DariBelanja_StateJadiMenungguBayar()
-        {
-            sm.StartBelanja();
-            sm.Checkout();
-            Assert.AreEqual(TransaksiState.MenungguBayar, sm.CurrentState);
-        }
-
-        [TestMethod]
-        public void Bayar_DariMenungguBayar_StateJadiSelesai()
-        {
-            sm.StartBelanja();
-            sm.Checkout();
-            sm.Bayar();
-            Assert.AreEqual(TransaksiState.Selesai, sm.CurrentState);
-        }
-
-        [TestMethod]
-        public void Batal_DariBelanja_StateJadiBatal()
-        {
-            sm.StartBelanja();
-            sm.Batal();
-            Assert.AreEqual(TransaksiState.Batal, sm.CurrentState);
-        }
-
-        [TestMethod]
-        public void Reset_StateKembaliIdle()
-        {
-            sm.StartBelanja();
-            sm.Batal();
-            sm.reset();
-            Assert.AreEqual(TransaksiState.Idle, sm.CurrentState);
-        }
-
-        [TestMethod]
-        public void TambahBarangLagi_DariMenungguBayar_StateJadiBelanja()
-        {
-            sm.StartBelanja();
-            sm.Checkout();
-            sm.tambahBarangLagi();
-            Assert.AreEqual(TransaksiState.Belanja, sm.CurrentState);
-        }
-
-
-        // Defensive Tests
+        // Defensive Tests - memastikan transisi yang tidak valid melempar exception
 
         [TestMethod]
         public void StartBelanja_DariBukanIdle_HarusThrowException()

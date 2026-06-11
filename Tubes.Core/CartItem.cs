@@ -28,5 +28,10 @@ namespace Tubes.Core
             this.barang = barang;
             this.jumlah = jumlah;
         }
+
+        public CartItem() 
+        {
+            barang = new Barang();
+        }
     }
 }

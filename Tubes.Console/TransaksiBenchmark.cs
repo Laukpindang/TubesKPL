@@ -8,6 +8,7 @@ namespace Tubes.ConsoleApp
     {
         private Cart _tempCart;
         private string paymentType;
+        private TransaksiStateMachine _sm;
 
         //Test dari beberapa ukuran riwayat
         //Penyusutan jumlah paramater dari [10, 50] (laptop hampir meledak) :v
@@ -26,6 +27,8 @@ namespace Tubes.ConsoleApp
             {
                 Transaksi.TambahTransaksi(_tempCart, paymentType);
             }
+
+            _sm = new TransaksiStateMachine();
         }
 
         [GlobalCleanup]
@@ -46,6 +49,55 @@ namespace Tubes.ConsoleApp
         {
             //Tes dampak penambahan riwayat baru
             Transaksi.TambahTransaksi(_tempCart, paymentType);
+        }
+
+        // --- Benchmark StateMachine ---
+
+        [Benchmark]
+        public void BenchmarkStartBelanja()
+        {
+            _sm.reset();
+            _sm.StartBelanja();
+        }
+
+        [Benchmark]
+        public void BenchmarkCheckout()
+        {
+            _sm.reset();
+            _sm.StartBelanja();
+            _sm.Checkout();
+        }
+
+        [Benchmark]
+        public void BenchmarkFullFlow()
+        {
+            _sm.reset();
+            _sm.StartBelanja();
+            _sm.Checkout();
+            _sm.Bayar();
+        }
+
+        [Benchmark]
+        public void BenchmarkBatal()
+        {
+            _sm.reset();
+            _sm.StartBelanja();
+            _sm.Batal();
+        }
+
+        [Benchmark]
+        public void BenchmarkReset()
+        {
+            _sm.reset();
+        }
+
+        [Benchmark]
+        public void BenchmarkTambahBarangLagi()
+        {
+            _sm.reset();
+            _sm.StartBelanja();
+            _sm.Checkout();
+            _sm.tambahBarangLagi();
         }
 
     }

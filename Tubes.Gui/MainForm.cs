@@ -15,6 +15,7 @@ namespace Tubes.Gui
         public MainForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             MainForm_Load(this, EventArgs.Empty);
         }
         private void MainForm_Load(object sender, EventArgs e)
@@ -35,6 +36,12 @@ namespace Tubes.Gui
             // Tampilkan form baru
             newForm.BringToFront();
             newForm.Show();
+
+            // auto resize form utama agar sesuai dengan ukuran form baru + panel menu
+            this.ClientSize = new Size(
+                newForm.ClientSize.Width + panelMenu.Width,
+                Math.Max(newForm.ClientSize.Height, panelMenu.Height)
+                );
         }
 
         private void btnKasir_Click(object sender, EventArgs e)
@@ -56,7 +63,7 @@ namespace Tubes.Gui
         private void btnLogout_Click(object sender, EventArgs e)
         {
             Session.logout();
-            
+
             Application.Restart();
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -64,6 +71,11 @@ namespace Tubes.Gui
             base.OnFormClosed(e);
 
             Application.Exit();
+        }
+
+        private void btnLaporan_Click(object sender, EventArgs e)
+        {
+            BukaHalaman(new LaporanPenjualan());
         }
     }
 }
