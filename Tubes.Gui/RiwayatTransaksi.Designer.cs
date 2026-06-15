@@ -36,29 +36,35 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(10, 7);
             label1.Name = "label1";
-            label1.Size = new Size(124, 20);
+            label1.Size = new Size(98, 15);
             label1.TabIndex = 0;
             label1.Text = "Riwayat Transaksi";
             // 
             // listRiwayatTransaksi
             // 
-            listRiwayatTransaksi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            listRiwayatTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            listRiwayatTransaksi.Location = new Point(12, 32);
+            listRiwayatTransaksi.AllowUserToAddRows = false;
+            listRiwayatTransaksi.AllowUserToDeleteRows = false;
+            listRiwayatTransaksi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            listRiwayatTransaksi.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            listRiwayatTransaksi.Location = new Point(10, 24);
+            listRiwayatTransaksi.Margin = new Padding(3, 2, 3, 2);
             listRiwayatTransaksi.Name = "listRiwayatTransaksi";
+            listRiwayatTransaksi.ReadOnly = true;
             listRiwayatTransaksi.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            listRiwayatTransaksi.Size = new Size(616, 406);
+            listRiwayatTransaksi.ScrollBars = ScrollBars.Vertical;
+            listRiwayatTransaksi.Size = new Size(1002, 303);
             listRiwayatTransaksi.TabIndex = 1;
             // 
             // RiwayatTransaksi
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(640, 450);
+            ClientSize = new Size(1024, 338);
             Controls.Add(listRiwayatTransaksi);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "RiwayatTransaksi";
             Text = "Riwayat Transaksi";
             ((System.ComponentModel.ISupportInitialize)listRiwayatTransaksi).EndInit();
