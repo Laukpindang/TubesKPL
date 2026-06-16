@@ -34,6 +34,28 @@ namespace Tubes.Gui
             lblTotalHarga.Text = $"Total: Rp {total}";
         }
 
+        private void UpdateTotalBayar()
+        {
+            if (!(inputPayment.SelectedItem == PaymentMethod.getPaymentType()[0]))
+            {
+                inputUangBayar.Enabled = false;
+                inputUangBayar.Text = _service.HitungTotalBelanja().ToString();
+            }
+        }
+
+        private void inputPayment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((inputPayment.SelectedItem == PaymentMethod.getPaymentType()[0]))
+            {
+                inputUangBayar.Enabled = true;
+                inputUangBayar.Text = "0";
+            }
+            else
+            {
+                UpdateTotalBayar();
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string namaBarang = inputBarang.Text;
@@ -52,7 +74,8 @@ namespace Tubes.Gui
             else
             {
                 // CLEAN CODE
-                inputJumlah.Value = 1;
+                UpdateTotalBayar();
+                inputJumlah.Value = 0;
             }
         }
 
@@ -63,6 +86,20 @@ namespace Tubes.Gui
             {
                 MessageBox.Show("Mohon masukkan angka uang yang valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            DialogResult dialogResult;
+
+            switch (inputPayment.Text)
+            {
+                case "E_Wallet":
+                    dialogResult = QRCode.Show();
+                    break;
+                case "Kartu":
+                    dialogResult = Kartu.Show();
+                    break;
+                default:
+                    break;
             }
 
             // Serahkan ke Service untuk diproses
