@@ -29,7 +29,6 @@ namespace Tubes.Gui
             if (int.TryParse(textBox1.Text, out int result))
             {
                 this.Close();
-                Kasir.PembayaranBerhasil();
             }
             else
             {
