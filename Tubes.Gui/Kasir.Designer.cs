@@ -52,10 +52,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(29, 62);
+            label1.Location = new Point(25, 46);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(100, 20);
+            label1.Size = new Size(79, 15);
             label1.TabIndex = 0;
             label1.Text = "Nama Barang";
             // 
@@ -63,28 +63,28 @@
             // 
             inputBarang.FormattingEnabled = true;
             inputBarang.Items.AddRange(new object[] { "Buku", "Pulpen", "Pensil", "Etanol", "Chitato", "Lays", "Bengbeng" });
-            inputBarang.Location = new Point(29, 84);
+            inputBarang.Location = new Point(25, 63);
             inputBarang.Margin = new Padding(2);
             inputBarang.Name = "inputBarang";
-            inputBarang.Size = new Size(258, 28);
+            inputBarang.Size = new Size(226, 23);
             inputBarang.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(29, 128);
+            label2.Location = new Point(25, 96);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(55, 20);
+            label2.Size = new Size(45, 15);
             label2.TabIndex = 2;
             label2.Text = "Jumlah";
             // 
             // inputJumlah
             // 
-            inputJumlah.Location = new Point(29, 150);
+            inputJumlah.Location = new Point(25, 112);
             inputJumlah.Margin = new Padding(2);
             inputJumlah.Name = "inputJumlah";
-            inputJumlah.Size = new Size(257, 27);
+            inputJumlah.Size = new Size(225, 23);
             inputJumlah.TabIndex = 3;
             // 
             // listBarang
@@ -92,14 +92,14 @@
             listBarang.AllowUserToAddRows = false;
             listBarang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             listBarang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            listBarang.Location = new Point(29, 242);
+            listBarang.Location = new Point(25, 182);
             listBarang.Margin = new Padding(2);
             listBarang.Name = "listBarang";
             listBarang.ReadOnly = true;
             listBarang.RowHeadersVisible = false;
             listBarang.RowHeadersWidth = 62;
             listBarang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            listBarang.Size = new Size(580, 180);
+            listBarang.Size = new Size(508, 135);
             listBarang.TabIndex = 5;
             // 
             // cartItemBindingSource
@@ -108,10 +108,10 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(196, 197);
+            btnAdd.Location = new Point(172, 148);
             btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(90, 27);
+            btnAdd.Size = new Size(79, 20);
             btnAdd.TabIndex = 6;
             btnAdd.Text = "Tambah";
             btnAdd.UseVisualStyleBackColor = true;
@@ -120,48 +120,49 @@
             // lblNamaKasir
             // 
             lblNamaKasir.AutoSize = true;
-            lblNamaKasir.Location = new Point(29, 25);
+            lblNamaKasir.Location = new Point(25, 19);
             lblNamaKasir.Margin = new Padding(2, 0, 2, 0);
             lblNamaKasir.Name = "lblNamaKasir";
-            lblNamaKasir.Size = new Size(85, 20);
+            lblNamaKasir.Size = new Size(67, 15);
             lblNamaKasir.TabIndex = 7;
             lblNamaKasir.Text = "Nama Kasir";
             // 
             // lblTotalHarga
             // 
             lblTotalHarga.AutoSize = true;
-            lblTotalHarga.Location = new Point(351, 25);
+            lblTotalHarga.Location = new Point(307, 19);
             lblTotalHarga.Margin = new Padding(2, 0, 2, 0);
             lblTotalHarga.Name = "lblTotalHarga";
-            lblTotalHarga.Size = new Size(87, 20);
+            lblTotalHarga.Size = new Size(67, 15);
             lblTotalHarga.TabIndex = 8;
             lblTotalHarga.Text = "Total Harga";
             // 
             // lblBayar
             // 
             lblBayar.AutoSize = true;
-            lblBayar.Location = new Point(351, 62);
+            lblBayar.Location = new Point(307, 46);
             lblBayar.Margin = new Padding(2, 0, 2, 0);
             lblBayar.Name = "lblBayar";
-            lblBayar.Size = new Size(140, 20);
+            lblBayar.Size = new Size(114, 15);
             lblBayar.TabIndex = 9;
             lblBayar.Text = "Jumlah Pembayaran";
             // 
             // inputUangBayar
             // 
-            inputUangBayar.Location = new Point(351, 84);
+            inputUangBayar.Increment = new decimal(new int[] { 1000, 0, 0, 0 });
+            inputUangBayar.Location = new Point(307, 63);
             inputUangBayar.Margin = new Padding(2);
             inputUangBayar.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             inputUangBayar.Name = "inputUangBayar";
-            inputUangBayar.Size = new Size(258, 27);
+            inputUangBayar.Size = new Size(226, 23);
             inputUangBayar.TabIndex = 10;
             // 
             // btnBayar
             // 
-            btnBayar.Location = new Point(519, 197);
+            btnBayar.Location = new Point(454, 148);
             btnBayar.Margin = new Padding(2);
             btnBayar.Name = "btnBayar";
-            btnBayar.Size = new Size(90, 27);
+            btnBayar.Size = new Size(79, 20);
             btnBayar.TabIndex = 11;
             btnBayar.Text = "Bayar";
             btnBayar.UseVisualStyleBackColor = true;
@@ -170,9 +171,9 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(351, 128);
+            label3.Location = new Point(307, 96);
             label3.Name = "label3";
-            label3.Size = new Size(146, 20);
+            label3.Size = new Size(117, 15);
             label3.TabIndex = 12;
             label3.Text = "Metode Pembayaran";
             // 
@@ -180,16 +181,18 @@
             // 
             inputPayment.FormattingEnabled = true;
             inputPayment.Items.AddRange(new object[] { "Tunai", "Kartu", "E_Wallet" });
-            inputPayment.Location = new Point(351, 149);
+            inputPayment.Location = new Point(307, 112);
+            inputPayment.Margin = new Padding(3, 2, 3, 2);
             inputPayment.Name = "inputPayment";
-            inputPayment.Size = new Size(258, 28);
+            inputPayment.Size = new Size(226, 23);
             inputPayment.TabIndex = 13;
+            inputPayment.SelectedIndexChanged += inputPayment_SelectedIndexChanged;
             // 
             // Kasir
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(640, 431);
+            ClientSize = new Size(560, 323);
             Controls.Add(inputPayment);
             Controls.Add(label3);
             Controls.Add(btnBayar);

@@ -35,7 +35,7 @@ namespace Tubes.Core
         public DetailTransaksiPlusKey(string key, DetailTransaksi detail)
         {
             kode_pembelian = key;
-            tanggal = detail.tanggal;
+            tanggal = string.Join("-", [detail.tanggal.Substring(0,4), detail.tanggal.Substring(2, 2), detail.tanggal.Substring(6, 2)]);
             waktu = detail.waktu;
             barang_list = detail.barang.ToDictionary(b => b.namaBarang, b => b.jumlah);
             total_pembayaran = detail.jumlah_pembayaran;
