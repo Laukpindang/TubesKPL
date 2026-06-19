@@ -50,12 +50,14 @@ namespace Tubes.Gui
             {
                 string tanggal = hari.Key;
                 string tanggalFormatted = $"{tanggal[6..8]}/{tanggal[4..6]}/{tanggal[0..4]}";
+
+                int jumlahTransaksiHari = hari.Count();
                 int totalHari = hari.Sum(x => x.Value.total);
 
                 dataGridView.Rows.Add(
                     tanggalFormatted,
-                    $"Rp {totalHari:N0}",
-                    $"Rp {totalHari:N0}"  // sementara laba = total
+                    jumlahTransaksiHari,
+                    $"Rp {totalHari:N0}"
                 );
 
                 totalKeseluruhan += totalHari;
