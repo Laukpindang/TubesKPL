@@ -19,7 +19,19 @@ namespace Tubes.Gui
             ComponentPlacing();
             _service = new TransaksiService(Transaksi.ListTransaksi);
             listRiwayatTransaksi.DataSource = _service.GetRiwayatTransaksi();
-            listRiwayatTransaksi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            FitGridControlToContent(listRiwayatTransaksi);
+        }
+
+        private void FitGridControlToContent(DataGridView dgv)
+        {
+            int padding = 3;
+            int totalWidth = dgv.RowHeadersWidth;
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                if (col.Visible) totalWidth += col.Width;
+            }
+
+            dgv.ClientSize = new Size(totalWidth + padding, dgv.Height);
         }
 
         private void ComponentPlacing()
@@ -46,12 +58,6 @@ namespace Tubes.Gui
             listRiwayatTransaksi.MultiSelect = false;
             listRiwayatTransaksi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-        }
-
-        private void btn_Click(object sender, EventArgs e)
-        {
-            //KEMBALI KE MENU SEBELUMNYA
-            this.Close();
         }
     }
 }

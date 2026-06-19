@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using System.Text.Json.Serialization;
+using System.Data;
 
 namespace Tubes.Core
 {
@@ -13,9 +13,10 @@ namespace Tubes.Core
             _RiwayatTransaksi = riwayatTransaksi;
         }
 
-        public BindingList<DetailTransaksiPlusKey> GetRiwayatTransaksi()
+        public DataTable GetRiwayatTransaksi()
         {
-            return new BindingList<DetailTransaksiPlusKey>(_RiwayatTransaksi.Select(kvp => new DetailTransaksiPlusKey(kvp.Key, kvp.Value)).ToList());
+            var transaksiList = _RiwayatTransaksi.Select(kvp => new DetailTransaksiPlusKey(kvp.Key, kvp.Value)).ToList();
+            return transaksiList.ToDynamicDataTable();
         }
     }
 
@@ -24,9 +25,9 @@ namespace Tubes.Core
         public string kode_pembelian { get; init; }
         public string tanggal { get; init; }
         public string waktu { get; init; }
-        public string barang { get; init; }
-        public int jumlah_pembayaran { get; init; }
-        public int total { get; init; }
+        public Dictionary<string, int> barang_list { get; init; }
+        public int total_pembayaran { get; init; }
+        public int total_dibayar { get; init; }
         public string jenis_pembayaran { get; init; }
 
         public DetailTransaksiPlusKey() { }
@@ -34,12 +35,63 @@ namespace Tubes.Core
         public DetailTransaksiPlusKey(string key, DetailTransaksi detail)
         {
             kode_pembelian = key;
-            tanggal = detail.tanggal;
+            tanggal = string.Join("-", [detail.tanggal.Substring(0,4), detail.tanggal.Substring(2, 2), detail.tanggal.Substring(6, 2)]);
             waktu = detail.waktu;
-            barang = String.Join(", ", detail.barang.Select(b => $"{b.namaBarang} (x{b.jumlah})"));
-            total = detail.total;
-            jumlah_pembayaran = detail.jumlah_pembayaran;
+            barang_list = detail.barang.ToDictionary(b => b.namaBarang, b => b.jumlah);
+            total_pembayaran = detail.jumlah_pembayaran;
+            total_dibayar = detail.total;
             jenis_pembayaran = detail.jenis_pembayaran;
+        }
+    }
+    public static class TransaksiGridExtensions
+    {
+        public static DataTable ToDynamicDataTable(this IEnumerable<DetailTransaksiPlusKey> transaksiList)
+        {
+            DataTable table = new DataTable();
+
+            table.Columns.Add("Kode Pembelian", typeof(string));
+            table.Columns.Add("Tanggal", typeof(string));
+            table.Columns.Add("Waktu", typeof(string));
+
+            var uniqueItems = transaksiList
+                .SelectMany(t => t.barang_list.Keys)
+                .Distinct()
+                .OrderBy(name => name);
+
+            foreach (var itemName in uniqueItems)
+            {
+                table.Columns.Add(itemName, typeof(int));
+            }
+
+            table.Columns.Add("Total Pembayaran", typeof(int));
+            table.Columns.Add("Total Dibayar", typeof(int));
+            table.Columns.Add("Jenis Pembayaran", typeof(string));
+
+
+            foreach (var transaksi in transaksiList)
+            {
+                DataRow row = table.NewRow();
+                row["Kode Pembelian"] = transaksi.kode_pembelian;
+                row["Tanggal"] = transaksi.tanggal;
+                row["Waktu"] = transaksi.waktu; 
+                
+                foreach (var itemName in uniqueItems)
+                {
+                    row[itemName] = transaksi.barang_list.ContainsKey(itemName)
+                        ? transaksi.barang_list[itemName]
+                        : 0;
+                }
+
+                row["Total Pembayaran"] = transaksi.total_pembayaran;
+                row["Total Dibayar"] = transaksi.total_dibayar;
+                row["Jenis Pembayaran"] = transaksi.jenis_pembayaran;
+
+                
+
+                table.Rows.Add(row);
+            }
+
+            return table;
         }
     }
 }
