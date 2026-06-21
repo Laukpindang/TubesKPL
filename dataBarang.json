@@ -29,6 +29,12 @@
       "nama": "Penggaris",
       "harga": 10000,
       "stok": 20
+    },
+    {
+      "id": 6,
+      "nama": "Penghapus",
+      "harga": 3000,
+      "stok": 3
     }
   ]
 }

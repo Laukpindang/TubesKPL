@@ -108,7 +108,7 @@
             // colTotal
             // 
             colTotal.FillWeight = 33F;
-            colTotal.HeaderText = "Total Transaksi";
+            colTotal.HeaderText = "Jumlah Transaksi";
             colTotal.MinimumWidth = 6;
             colTotal.Name = "colTotal";
             colTotal.ReadOnly = true;
@@ -116,7 +116,7 @@
             // colLaba
             // 
             colLaba.FillWeight = 33F;
-            colLaba.HeaderText = "Keuntungan ";
+            colLaba.HeaderText = "Pendapatan ";
             colLaba.MinimumWidth = 6;
             colLaba.Name = "colLaba";
             colLaba.ReadOnly = true;
